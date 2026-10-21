@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>管理画面 | maison de vacancier</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      min-height: 100vh;
+      background: #15121f;
+      color: #f7f2ff;
+      font-family: system-ui, sans-serif;
+    }
+    main {
+      max-width: 850px;
+      margin: 35px auto;
+    }
+    .panel {
+      background: #211b30;
+      border: 1px solid #443653;
+      border-radius: 18px;
+      padding: 24px;
+      margin: 18px 0;
+    }
+    h1 { color: #d7b5ff; }
+    input, textarea {
+      display: block;
+      width: 100%;
+      margin: 10px 0 16px;
+      padding: 12px;
+      border-radius: 9px;
+      border: 1px solid #57476d;
+      background: #171321;
+      color: white;
+      font: inherit;
+    }
+    textarea {
+      min-height: 360px;
+      resize: vertical;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 18px;
+      margin: 4px 6px 4px 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      background: #bd91ff;
+      color: #20132d;
+    }
+    button.secondary {
+      background: #443653;
+      color: white;
+    }
+    #status {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      color: #d7c1ff;
+    }
+    .hint { color: #c6bbd3; font-size: 14px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>maison de vacancier</h1>
+  <p>サイト管理パネル</p>
+
+  <section id="loginPanel" class="panel">
+    <h2>管理者ログイン</h2>
+    <form id="loginForm">
+      <label for="email">メールアドレス</label>
+      <input id="email" type="email" autocomplete="username" required>
+
+      <label for="password">パスワード</label>
+      <input id="password" type="password"
+             autocomplete="current-password" required>
+
+      <button type="submit">ログイン</button>
+    </form>
+  </section>
+
+  <section id="editorPanel" class="panel" hidden>
+    <h2>サイト設定の編集</h2>
+    <p class="hint">
+      JSON形式で編集する画面なのだ。
+      カッコやカンマを消さないように注意してね。
+    </p>
+
+    <label for="content">保存するサイト設定（JSON）</label>
+    <textarea id="content" spellcheck="false"></textarea>
+
+    <button id="saveButton" type="button">保存する</button>
+    <button id="reloadButton" class="secondary" type="button">
+      再読み込み
+    </button>
+    <button id="logoutButton" class="secondary" type="button">
+      ログアウト
+    </button>
+  </section>
+
+  <section class="panel">
+    <h3>状態</h3>
+    <p id="status" role="status">接続設定を確認中...</p>
+  </section>
+</main>
+
+<script>
+  // SupabaseのProject URLとPublishable keyに置き換える
+  const SUPABASE_URL = "https://hyywkocnnujkyhsklgar.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_N8CsUHgnLCCDb7SKNCreWQ_0yHS2_jy";
+
+  // 登録した管理者のUID
+  const ADMIN_UID = "303eb34e-0ffd-4c8f-a521-a002dcfbf970";
+
+  const statusEl = document.getElementById("status");
+  const loginPanel = document.getElementById("loginPanel");
+  const editorPanel = document.getElementById("editorPanel");
+  const contentEl = document.getElementById("content");
+  const saveButton = document.getElementById("saveButton");
+
+  let db = null;
+  let currentUser = null;
+
+  function status(message) {
+    statusEl.textContent = message;
+  }
+
+  function showEditor(show) {
+    loginPanel.hidden = show;
+    editorPanel.hidden = !show;
+  }
+
+  function requireAdmin(user) {
+    return user && user.id === ADMIN_UID;
+  }
+
+  async function loadContent() {
+    if (!requireAdmin(currentUser)) {
+      status("管理者としてログインしてください。");
+      return;
+    }
+
+    status("設定を読み込んでいるのだ...");
+
+    const { data, error } = await db
+      .from("site_content")
+      .select("content")
+      .eq("id", 1)
+      .single();
+
+    if (error) {
+      status("読み込みエラー: " + error.message);
+      return;
+    }
+
+    contentEl.value = JSON.stringify(data.content, null, 2);
+    status("読み込み成功！ 編集して保存できるのだ。");
+  }
+
+  document.getElementById("loginForm").addEventListener(
+    "submit", async (event) => {
+      event.preventDefault();
+
+      if (!db) {
+        status("Supabaseの接続設定を確認してください。");
+        return;
+      }
+
+      status("ログイン中...");
+
+      const { data, error } = await db.auth.signInWithPassword({
+        email: document.getElementById("email").value.trim(),
+        password: document.getElementById("password").value
+      });
+
+      if (error) {
+        status("ログイン失敗: " + error.message);
+        return;
+      }
+
+      if (!requireAdmin(data.user)) {
+        await db.auth.signOut();
+        status("このアカウントには管理者権限がありません。");
+        return;
+      }
+
+      currentUser = data.user;
+      showEditor(true);
+      await loadContent();
+    }
+  );
+
+  saveButton.addEventListener("click", async () => {
+    if (!requireAdmin(currentUser)) {
+      status("管理者としてログインしてください。");
+      return;
+    }
+
+    let content;
+
+    try {
+      content = JSON.parse(contentEl.value);
+    } catch {
+      status("JSONの書式が正しくないのだ。カンマやカッコを確認してね。");
+      return;
+    }
+
+    if (
+      content === null ||
+      Array.isArray(content) ||
+      typeof content !== "object"
+    ) {
+      status("設定はJSONオブジェクト形式で入力してください。");
+      return;
+    }
+
+    saveButton.disabled = true;
+    status("保存中...");
+
+    try {
+      const { error } = await db
+        .from("site_content")
+        .update({ content })
+        .eq("id", 1);
+
+      if (error) {
+        status("保存エラー: " + error.message);
+      } else {
+        status("保存成功！ データベースに反映されたのだ！");
+      }
+    } finally {
+      saveButton.disabled = false;
+    }
+  });
+
+  document.getElementById("reloadButton").addEventListener(
+    "click", loadContent
+  );
+
+  document.getElementById("logoutButton").addEventListener(
+    "click", async () => {
+      const { error } = await db.auth.signOut();
+      currentUser = null;
+      contentEl.value = "";
+      showEditor(false);
+      status(error ? "ログアウトエラー: " + error.message : "ログアウトしました。");
+    }
+  );
+
+  async function start() {
+    if (
+      SUPABASE_URL === "ここにProject_URL" ||
+      SUPABASE_PUBLISHABLE_KEY === "ここにPublishable_key"
+    ) {
+      showEditor(false);
+      status("先にSupabaseのProject URLとPublishable keyを設定してください。");
+      return;
+    }
+
+    db = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const { data, error } = await db.auth.getSession();
+
+    if (error) {
+      status("接続エラー: " + error.message);
+      return;
+    }
+
+    if (data.session && requireAdmin(data.session.user)) {
+      currentUser = data.session.user;
+      showEditor(true);
+      await loadContent();
+    } else {
+      if (data.session) await db.auth.signOut();
+      showEditor(false);
+      status("管理者アカウントでログインしてください。");
+    }
+  }
+
+  start();
+</script>
+</body>
+</html>
