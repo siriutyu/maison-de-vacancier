@@ -1,232 +1,470 @@
-<!DOCTYPE html>
-<html lang="ja" data-motion="on">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>maison de vacancier | Discordサーバー紹介</title>
-<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#17102b;--surface:#241a42;--ink:#fff3e6;--muted:#c6b8e6;--line:#3d2f6b;--orange:#ff8a1f;--orange-ink:#2a1400;--violet:#9b6bff;--glow:rgba(255,138,31,.22);}
-@media (prefers-color-scheme: light){:root{--bg:#fff4e8;--surface:#ffffff;--ink:#2b1a45;--muted:#6c5a8f;--line:#f0d6b8;--orange:#f26b00;--orange-ink:#fff;--violet:#6a3fd1;--glow:rgba(242,107,0,.16);}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.8;font-weight:500;background-image:radial-gradient(circle at 85% 0,var(--glow),transparent 45%)}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-a{color:inherit}
-.event{overflow:hidden;white-space:nowrap;padding:8px 0;background:var(--orange);color:var(--orange-ink);font-weight:900}
-.event .track{display:inline-block;animation:marq 26s linear infinite}
-@keyframes marq{to{transform:translateX(-50%)}}
-.hero{padding:64px 0 52px;text-align:center}
-.small{color:var(--muted);margin:0 0 6px}
-h1{font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.15;margin:0 0 14px;font-weight:900;overflow-wrap:anywhere}
-.halloween{display:inline-block;border:2px solid var(--orange);color:var(--orange);border-radius:999px;padding:3px 16px;font-weight:700;margin:6px 0 24px;font-size:.95rem}
-.lead{color:var(--muted);margin:0 auto 30px;max-width:32em}
-.btn{display:inline-block;background:var(--orange);color:var(--orange-ink);font-weight:900;font-size:1.1rem;padding:14px 34px;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 rgba(0,0,0,.28);transition:transform .12s,box-shadow .12s}
-.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 rgba(0,0,0,.28)}
-.hint{display:block;margin-top:14px;font-size:.88rem;color:var(--muted)}
-section{padding:44px 0;border-top:1px solid var(--line)}
-h2{font-size:1.6rem;margin:0 0 6px;font-weight:900}
-.sub{color:var(--muted);margin:0 0 24px}
-.features{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
-.features li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
-.features .i{flex:none;font-size:1.3rem;line-height:1.5}
-.welcome{background:var(--surface);border:2px dashed var(--orange);border-radius:16px;padding:18px 22px;text-align:center;font-weight:900;font-size:1.1rem;margin-top:18px}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
-dt{color:var(--muted)}dd{margin:0;font-weight:700}
-.links{display:flex;flex-wrap:wrap;gap:12px}
-.links a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-weight:700;text-decoration:none}
-.cta{text-align:center;padding:56px 0 72px;border-top:1px solid var(--line)}
-.cta h2{font-size:2rem;margin-bottom:20px}
-footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 0 36px}
-.boost{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.boost div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.boost b{display:block;font-size:1.25rem;color:var(--orange)}.boost em{font-style:normal;font-weight:900;display:block;margin-bottom:4px}
-.note{color:var(--muted);font-size:.9rem;margin:14px 0 0}
-details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:900}details p,details ul{margin:10px 0 0;font-size:.95rem}details ul{padding-left:1.2em}details h3{font-size:.95rem;margin:12px 0 0;color:var(--muted)}
-ol.rules{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 22px 14px 44px;margin:0}
-ol.rules li{padding:7px 0;border-bottom:1px dashed var(--line)}ol.rules li:last-child{border-bottom:0}
-ol.rules .rt{display:block;font-weight:900}ol.rules .rd{display:block;color:var(--muted);font-size:.93rem;line-height:1.6}
-.pen{list-style:none;margin:10px 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
-ol.rules .pen li{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg);font-size:.9rem;line-height:1.5}
-.pen b{display:block;color:var(--orange)}ol.rules .pen li:last-child b{color:#ff6b6b}
-.pen-note{display:block;font-size:.9rem;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}
-@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.5}90%{opacity:.5}100%{transform:translateY(-115vh) rotate(40deg);opacity:0}}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
-.floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.floaters span{position:absolute;bottom:-60px;opacity:0;animation:rise linear infinite}
-.wrap,.event,footer{position:relative;z-index:1}
-body{background-image:radial-gradient(circle at 85% 0,var(--glow),transparent 45%),radial-gradient(var(--line) 1px,transparent 1.3px);background-size:auto,24px 24px}
-h1,h2{font-family:"Dela Gothic One","Zen Maru Gothic",sans-serif;font-weight:400;letter-spacing:.02em}
-h1{font-size:clamp(2.4rem,8.5vw,5rem);line-height:1.1}
-.hero{text-align:left;padding:52px 0 40px}.lead{margin-left:0}
-h2{display:inline-block;margin-left:-6px;padding:0 6px;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--orange) 45%,transparent) 62%)}
-h1 .word{display:inline-block;white-space:nowrap}
-h1 .ch{display:inline-block;opacity:0;transform:translateY(.7em) rotate(8deg);animation:pop .7s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i)*50ms + 150ms)}
-@keyframes pop{to{opacity:1;transform:none}}
-.halloween{animation:float 3.2s ease-in-out infinite}@keyframes float{50%{transform:translateY(-5px)}}
-.btn.pulse{animation:glow 2.4s ease-in-out infinite}.btn.pulse:hover{animation:none}
-@keyframes glow{0%,100%{box-shadow:0 5px 0 rgba(0,0,0,.28),0 0 0 0 var(--glow)}50%{box-shadow:0 5px 0 rgba(0,0,0,.28),0 0 0 16px transparent}}
-.tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 4px;padding:8px 20px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px)}
-.tabbar button{flex:none;font:inherit;font-weight:900;background:none;border:0;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,transform .15s}
-.tabbar button:first-child{margin-left:auto}.tabbar button:last-child{margin-right:auto}
-.tabbar button[aria-selected="true"]{background:var(--orange);color:var(--orange-ink)}
-.panel{display:none}.panel.on{display:block}
-.panel.on>*{animation:up .55s cubic-bezier(.2,.8,.2,1) both}
-.panel.on .stag{animation:up .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*60ms)}
-@keyframes up{from{opacity:0;transform:translateY(20px)}}
-.features li,.boost div,details,.links a,dl,ol.rules,.welcome{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--orange)}
-.welcome{border-style:solid;animation:shine 3.5s linear infinite;background-image:linear-gradient(110deg,transparent 40%,var(--glow) 50%,transparent 60%);background-size:250% 100%}
-@keyframes shine{from{background-position:150% 0}to{background-position:-50% 0}}
-.features li:hover,.boost div:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--orange)}
-.features li,.boost div{transition:transform .2s,box-shadow .2s}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:22px 0 0}
-.chips li{border:2px solid var(--ink);border-radius:999px;padding:3px 14px;font-weight:700;font-size:.88rem;background:var(--surface)}
-.fxbtn{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;font:inherit;font-weight:900;font-size:.85rem;background:var(--surface);color:var(--ink);border:2px solid var(--orange);border-radius:999px;padding:8px 16px;cursor:pointer}
-html[data-motion="off"] *{animation:none!important;transition:none!important}
-html[data-motion="off"] .floaters{display:none}html[data-motion="off"] h1 .ch{opacity:1!important;transform:none!important}
-</style>
-</head>
-<body>
-<div class="floaters" id="floaters" aria-hidden="true"></div>
-<div class="event" role="status" aria-label="超大規模イベント開催中!"><div class="track" aria-hidden="true"><span>🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　</span><span>🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　🎃 超大規模イベント開催中!　　</span></div></div>
-<div class="wrap">
-  <header class="hero">
-    <p class="small">ようこそ!</p>
-    <h1>maison de vacancier</h1>
-    <span class="halloween">ただいまハロウィン仕様の特別な外観に</span>
-    <p class="lead">選挙もイベントも大会もある、にぎやかなDiscordサーバー。見る専・宣伝のみ・即抜けも大歓迎です。</p>
-    <a class="btn" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">サーバーに参加する</a>
-    <span class="hint">招待リンクを開くと、Discordが立ち上がります。</span>
-    <ul class="chips"><li>🗓 2026.02.12 創設</li><li>🏷 タグ「暇人軍団」</li><li>👑 鯖主 ひまじん</li></ul>
-  </header>
-  <div class="tabbar" role="tablist" aria-label="メニュー">
-    <button role="tab" data-go="features" aria-selected="true">✨ 特徴</button><button role="tab" data-go="boost" aria-selected="false">🚀 ブースト特典</button><button role="tab" data-go="roles" aria-selected="false">👑 ロール</button><button role="tab" data-go="rules" aria-selected="false">📜 ルール</button><button role="tab" data-go="info" aria-selected="false">ℹ️ 情報</button>
-  </div>
-<section class="panel on" data-tab="features">
-<h2>このサーバーの特徴</h2><p class="sub">気になるところだけ使ってもOKです。</p>
-<ul class="features"><li><span class="i">🗳️</span>定期的に選挙が行われる</li>
-<li><span class="i">📣</span>多数の宣伝チャンネルで宣伝可能</li>
-<li><span class="i">😊</span>民度がとにかくいい</li>
-<li><span class="i">🎙️</span>VCが活発に動いている</li>
-<li><span class="i">🏆</span>個人主催の大会が開催できる</li>
-<li><span class="i">🎉</span>定期的にイベントが開催</li>
-<li><span class="i">🎁</span>常時開催のイベントで豪華な報酬がもらえる</li>
-<li><span class="i">🤝</span>メンバー数に関係なく連携可能</li>
-<li><span class="i">⛏️</span>このサーバー直属のマイクラサーバーがある</li></ul><div class="welcome">見る専・宣伝のみ・即抜け大歓迎!</div></section>
-<section class="panel" data-tab="boost">
-<h2>ブースト特典</h2><p class="sub">サーバーをブーストすると、数に応じてロールと特典がもらえます。</p>
 
-
-    
-    
-    <div class="boost">
-      <div><b>1ブースト</b><em>サーバー貢献者</em>仕事場で稼ぐコインが1.1倍。vip宣伝(1h)とブースター専用宣伝場(1h)で宣伝できる。</div>
-      <div><b>2ブースト</b><em>最高のサーバー貢献者</em>一部イベントで優遇措置を受けられる。</div>
-      <div><b>5ブースト</b><em>神</em>神専用宣伝場(2h)で宣伝できる。</div>
-      <div><b>10ブースト</b><em>GOD</em>管理者より少し弱い権限が与えられる。</div>
-    </div>
-    <p class="note">ブーストが切れると、これらの報酬は剥奪されます。</p>
-  </section>
-<section class="panel" data-tab="roles">
-<h2>特殊・貢献者ロール</h2><p class="sub">タップすると詳細が開きます。(下のロールほど上位に表示されます)</p>
-
-
-    
-    
-    <details><summary>サーバー貢献人</summary>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li></ul>
-      <h3>入手方法</h3><ul><li>不定期開催のメンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>最高のサーバー貢献人</summary>
-      <h3>特典</h3><ul><li>一部イベントで優遇措置を受けられる</li></ul>
-      <h3>入手方法</h3><ul><li>不定期開催のメンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>サーバー貢献者</summary>
-      <h3>特典</h3><ul><li>ブースター専用宣伝場(1h)とvip宣伝(1h)で宣伝できる</li><li>常時開催の資金管理イベントで稼げるコインが1.1倍</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>サーバーを1ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>最高のサーバー貢献者</summary>
-      <h3>特典</h3><ul><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>サーバーを2ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>神</summary>
-      <h3>特典</h3><ul><li>神専用宣伝場(2h)とvip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>常時開催のランクアップイベントで、もらえるxpが1.2倍</li><li>「個人的なお知らせ」で話せる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル28に到達する</li><li>資金管理イベントのshopで500000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li><li>サーバーを5ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>GOD</summary>
-      <h3>特典</h3><ul><li>管理者より少し弱い権限が与えられる</li><li>vip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル45に到達する</li><li>資金管理イベントのshopで10000000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li><li>サーバーを10ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>永久名誉鯖民(歴代獲得者0人)</summary>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に💎が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル90に到達する</li><li>資金管理イベントのshopで9000000000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>固有ロール(鯖主が認めた1人だけ)</summary>
-      <p>最強の貢献人・ベンジリー / 睡眠宣言の神 / 最高のディーラー! / 万年管理職 / 浮上率の神 / ブーストの神</p>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li><li>貢献者ロールの中で、いちばん上に表示される</li><li>ロール名と色を、もらった本人が決められる</li></ul>
-      <h3>入手方法</h3><ul><li>鯖主に、サーバーへ多大な貢献をしたと認められたメンバー1人にだけ付与される</li></ul></details>
-    <p class="note">これらのロールはすべて、表示名がグラデーションになり、管理職ロールの次に上位に表示され、オンラインメンバー一覧で別枠表示されます。</p>
-  </section>
-<section class="panel" data-tab="rules">
-<h2>ルール</h2><p class="sub">みんなで気持ちよく過ごすために、参加前に読んでください。</p>
-<ol class="rules">
-      <li><b class="rt">下ネタは専用チャンネルだけ</b><span class="rd">「下ネタ雑談」と「あーるじゅうはち」以外では禁止です。</span></li>
-      <li><b class="rt">雰囲気を悪くする発言はNG</b><span class="rd">他人が傷つく発言や、管理者が悪質と判断した発言は控えてください。</span></li>
-      <li><b class="rt">スパム・運営の妨害は禁止</b><span class="rd">過度なスパムや、鯖運営の妨害・遅延などの行為は固く禁じます。</span></li>
-      <li><b class="rt">不謹慎・宗教・差別的な発言はNG</b><span class="rd">これらの発言はやめてください。</span></li>
-      <li><b class="rt">公の場での喧嘩はNG</b><span class="rd">サーバーの雰囲気が悪くなるので、やめましょう。</span></li>
-      <li><b class="rt">管理者について</b><span class="rd">管理者は、緊急事態以外では「管理者たち」ロールを付けたメンバーのみとします。</span></li>
-      <li><b class="rt">引き抜きは控える</b><span class="rd">引き抜き行為などは控えてください。</span></li>
-      <li><b class="rt">サブアカウントは申請制</b><span class="rd">「目安箱」で入れたいサブアカウントをメンションし、管理者の認証を受けてください。</span></li>
-      <li><b class="rt">宣伝は宣伝場だけ</b><span class="rd">宣伝場以外での宣伝はやめましょう。</span></li>
-      <li><b class="rt">違反したときの対応</b><span class="rd">ルール1〜9を破った回数で、対応が変わります。</span>
-        <ul class="pen">
-          <li><b>1回目</b>違反者1のロール<br>1時間タイムアウト</li>
-          <li><b>2回目</b>違反者2のロール<br>1日タイムアウト</li>
-          <li><b>3回目</b>違反者3のロール<br>1週間タイムアウト</li>
-          <li><b>4回目以降</b>特例がない限り<br>サーバーからBAN</li>
-        </ul>
-        <span class="pen-note">⚠️ ルール15・16(法律の遵守、個人情報)を破ると、2回分の違反として扱います。</span></li>
-      <li><b class="rt">GODロールでの荒らしは即BAN</b><span class="rd">GODロールを使った荒らしを確認した場合、直ちにBANします。</span></li>
-      <li><b class="rt">深夜(21:00〜6:00)のメンション</b><span class="rd">「雑談メンションOK」系列をメンションするときは、「深夜の雑談メンションOK」系列を使いましょう。(管理者の重要なお知らせは例外)</span></li>
-      <li><b class="rt">「無法地帯」はルール適用外</b><span class="rd">「無法地帯」(2か所)では、スパムや下ネタも違反になりません。</span></li>
-      <li><b class="rt">鯖主について</b><span class="rd">鯖主は基本的に「ひまじん」(てめえらの非常食 ※口悪いです あと鯖主です)です。</span></li>
-      <li><b class="rt">日本の法律を守る</b><span class="rd">日本国の法律を遵守してください。</span></li>
-      <li><b class="rt">個人情報をばらさない</b><span class="rd">人の個人情報をばらすような発言はしないでください。</span></li>
-      <li><b class="rt">宣伝場以外で宣伝したとき</b><span class="rd">違反者の判定はしませんが、メッセージの削除と1時間のタイムアウトになります。</span></li>
-      <li><b class="rt">トラブルが起きたら</b><span class="rd">ユーザー間、またはユーザーと運営・サーバーとの間のトラブルは、当事者間で誠実に解決します。裁判上の紛争になった場合は、鯖主の居住地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とします。</span></li>
-      <li><b class="rt">全力で楽しもう</b><span class="rd">このサーバーを全力で楽しみましょう。</span></li>
-    </ol></section>
-<section class="panel" data-tab="info">
-<h2>サーバー情報</h2><p class="sub">&nbsp;</p>
-<dl>
-      <dt>鯖主</dt><dd>ひまじん</dd>
-      <dt>創設日</dt><dd>2026年2月12日</dd>
-      <dt>サーバータグ</dt><dd>暇人軍団</dd>
-    </dl><h2 style="margin-top:30px">リンク</h2><p class="sub">&nbsp;</p><div class="links">
-      <a href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">Discord招待リンク</a>
-      <a href="https://x.com/maison_de_vacan" target="_blank" rel="noopener">公式X(Twitter)</a>
-    </div></section>
-  <div class="cta"><h2>待ってます!</h2><a class="btn" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">Discordで参加する</a></div>
-</div>
-<footer>© maison de vacancier</footer>
-<button class="fxbtn" id="fx" type="button" aria-pressed="true">🎬 アニメ ON</button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-(function(){
-var root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var bar=document.querySelector('.tabbar'),tabs=[].slice.call(bar.querySelectorAll('button')),panels=[].slice.call(document.querySelectorAll('.panel'));
-var names=tabs.map(function(b){return b.getAttribute('data-go')});
-var fx=document.getElementById('fx');
-function setFx(on){root.setAttribute('data-motion',on?'on':'off');fx.textContent='\uD83C\uDFAC \u30A2\u30CB\u30E1 '+(on?'ON':'OFF')}
-setFx(!reduce);fx.addEventListener('click',function(){setFx(root.getAttribute('data-motion')!=='on')});
-var h1=document.querySelector('h1'),title=h1.textContent,n=0;h1.setAttribute('aria-label',title);h1.textContent='';
-title.split(' ').forEach(function(w,wi){if(wi)h1.appendChild(document.createTextNode(' '));var ws=document.createElement('span');ws.className='word';ws.setAttribute('aria-hidden','true');
-[].forEach.call(w,function(c){var s=document.createElement('span');s.className='ch';s.style.setProperty('--i',n++);s.textContent=c;ws.appendChild(s)});h1.appendChild(ws)});
-document.querySelector('.hero .btn').classList.add('pulse');
-var f=document.getElementById('floaters'),em=['\uD83C\uDF83','\uD83D\uDC7B','\uD83E\uDD87','\uD83D\uDD78\uFE0F','\uD83C\uDF6C','\uD83D\uDD6F\uFE0F'];
-for(var i=0;i<14;i++){var s=document.createElement('span');s.textContent=em[i%em.length];s.style.left=(Math.random()*96)+'%';s.style.fontSize=(18+Math.random()*26)+'px';s.style.animationDuration=(12+Math.random()*14)+'s';s.style.animationDelay=(-Math.random()*20)+'s';f.appendChild(s)}
-panels.forEach(function(p){[].forEach.call(p.querySelectorAll('.features li,.boost>div,details,ol.rules li,dl,.links a,.welcome'),function(el,i){el.classList.add('stag');el.style.setProperty('--i',Math.min(i,12))})});
-function show(name){if(names.indexOf(name)<0)name='features';
-panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-tab')===name)});
-tabs.forEach(function(b){var on=b.getAttribute('data-go')===name;b.setAttribute('aria-selected',on?'true':'false');if(on)b.scrollIntoView({block:'nearest',inline:'center'})});
-var hero=document.querySelector('.hero'),y=hero.getBoundingClientRect().bottom+window.scrollY;if(window.scrollY>y)window.scrollTo({top:y})}
-tabs.forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-go'))})});
-window.addEventListener('hashchange',function(){show(location.hash.slice(1))});show(location.hash.slice(1));
+(() => {
+  // ★ここを自分のSupabase情報に置き換える
+  const SUPABASE_URL = "https://hyywkocnnujkyhsklgar.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_N8CsUHgnLCCDb7SKNCreWQ_0yHS2_jy";
+  const ADMIN_UID = "303eb34e-0ffd-4c8f-a521-a002dcfbf970";
+
+  if (
+    SUPABASE_URL.startsWith("YOUR_") ||
+    SUPABASE_KEY.startsWith("YOUR_")
+  ) return;
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) =>
+    [...root.querySelectorAll(s)];
+
+  // 元ページのDOM構造を基準にIDを割り当てる
+  $$("body *").forEach((el, i) => {
+    el.dataset.veid = String(i);
+  });
+
+  let edits = {};
+  let selected = null;
+  let editing = false;
+  let currentUser = null;
+  let originalContent = {};
+
+  const style = document.createElement("style");
+  style.textContent = `
+    #ve-toggle {
+      position: fixed; right: 16px; bottom: 16px; z-index: 99999;
+      border: 0; border-radius: 999px; padding: 13px 19px;
+      background: #9b6bff; color: white; font: inherit;
+      font-weight: 900; cursor: pointer;
+      box-shadow: 0 4px 18px #0005;
+    }
+    #ve-panel {
+      position: fixed; z-index: 100000; right: 12px; bottom: 72px;
+      width: min(360px, calc(100vw - 24px));
+      max-height: min(78vh, 700px); overflow: auto;
+      padding: 18px; border-radius: 16px;
+      background: #211b30; color: #fff;
+      border: 1px solid #7252a0; box-shadow: 0 8px 40px #0008;
+      font: 14px/1.5 system-ui, sans-serif;
+    }
+    #ve-panel * { box-sizing: border-box; }
+    #ve-panel input, #ve-panel button {
+      font: inherit; max-width: 100%;
+    }
+    #ve-panel input[type="email"],
+    #ve-panel input[type="password"],
+    #ve-panel input[type="url"],
+    #ve-panel input[type="text"] {
+      width: 100%; padding: 9px; margin: 5px 0 10px;
+      border: 1px solid #7252a0; border-radius: 7px;
+      background: #17102b; color: white;
+    }
+    #ve-panel input[type="color"] {
+      width: 48px; height: 32px; vertical-align: middle;
+    }
+    #ve-panel button {
+      padding: 8px 10px; margin: 3px;
+      border: 0; border-radius: 7px; cursor: pointer;
+      background: #9b6bff; color: white;
+    }
+    #ve-panel button.secondary { background: #443653; }
+    #ve-panel label { display: block; margin-top: 9px; }
+    #ve-panel small { color: #d4c4ed; }
+    #ve-status { white-space: pre-wrap; overflow-wrap: anywhere; }
+    [data-ve-selected="true"] {
+      outline: 3px solid #ff8a1f !important;
+      outline-offset: 2px;
+      cursor: crosshair !important;
+    }
+    body.ve-editing [data-veid] { cursor: crosshair; }
+    body.ve-editing #ve-panel,
+    body.ve-editing #ve-toggle { cursor: auto; }
+  `;
+  document.head.appendChild(style);
+
+  const toggle = document.createElement("button");
+  toggle.id = "ve-toggle";
+  toggle.textContent = "✎ 編集モード";
+  document.body.appendChild(toggle);
+
+  const panel = document.createElement("aside");
+  panel.id = "ve-panel";
+  panel.hidden = true;
+  panel.innerHTML = `
+    <h2 style="margin-top:0">サイト編集</h2>
+    <div id="ve-login">
+      <p>管理者ログイン</p>
+      <form id="ve-login-form">
+        <label>メールアドレス
+          <input id="ve-email" type="email" required autocomplete="username">
+        </label>
+        <label>パスワード
+          <input id="ve-password" type="password" required autocomplete="current-password">
+        </label>
+        <button>ログイン</button>
+      </form>
+    </div>
+    <div id="ve-tools" hidden>
+      <p>ページ内の変更したい場所をクリックするのだ。</p>
+      <p><small id="ve-selected-label">選択なし</small></p>
+
+      <label>文章（文字だけの要素）
+        <input id="ve-text" type="text">
+      </label>
+      <button id="ve-text-apply">文章を適用</button>
+
+      <label>リンク先URL
+        <input id="ve-href" type="url" placeholder="https://...">
+      </label>
+      <button id="ve-href-apply">リンクを適用</button>
+
+      <label>画像URL
+        <input id="ve-src" type="url" placeholder="https://.../image.png">
+      </label>
+      <button id="ve-src-apply">画像を適用</button>
+
+      <label>文字色 <input id="ve-color" type="color" value="#ffffff"></label>
+      <button id="ve-color-apply">文字色を適用</button>
+
+      <label>背景色 <input id="ve-bg" type="color" value="#241a42"></label>
+      <button id="ve-bg-apply">背景色を適用</button>
+
+      <label>幅（例：100%、80%、auto）
+        <input id="ve-width" type="text" placeholder="変更しない">
+      </label>
+      <button id="ve-width-apply">幅を適用</button>
+
+      <hr style="border-color:#57476d;margin:16px 0">
+      <p>セクションの並び替え</p>
+      <button id="ve-up" class="secondary">↑ 上へ</button>
+      <button id="ve-down" class="secondary">↓ 下へ</button>
+
+      <hr style="border-color:#57476d;margin:16px 0">
+      <button id="ve-save">変更を保存</button>
+      <button id="ve-reload" class="secondary">保存内容を再読込</button>
+      <button id="ve-exit" class="secondary">編集終了</button>
+      <button id="ve-logout" class="secondary">ログアウト</button>
+    </div>
+    <p id="ve-status" role="status">準備中...</p>
+  `;
+  document.body.appendChild(panel);
+
+  const status = (msg) => { $("#ve-status").textContent = msg; };
+
+  function chooseTarget(el) {
+    if (!el || panel.contains(el) || el === toggle) return null;
+    return el.closest("a, h1, h2, h3, p, li, dt, dd, button, img, section")
+      || el;
+  }
+
+  function selectElement(el) {
+    if (selected) selected.removeAttribute("data-ve-selected");
+    selected = el;
+    if (!selected) return;
+
+    selected.setAttribute("data-ve-selected", "true");
+    $("#ve-selected-label").textContent =
+      `<${selected.tagName.toLowerCase()}> #${selected.dataset.veid}`;
+
+    $("#ve-text").value = selected.children.length
+      ? "" : selected.textContent.trim();
+
+    $("#ve-href").value =
+      selected instanceof HTMLAnchorElement ? selected.href : "";
+
+    $("#ve-src").value =
+      selected instanceof HTMLImageElement ? selected.src : "";
+
+    $("#ve-color").value = toHex(getComputedStyle(selected).color)
+      || "#ffffff";
+    $("#ve-bg").value = toHex(getComputedStyle(selected).backgroundColor)
+      || "#241a42";
+    $("#ve-width").value = selected.style.width || "";
+  }
+
+  function toHex(value) {
+    const m = value.match(/\d+/g);
+    if (!m || m.length < 3) return "";
+    return "#" + m.slice(0, 3)
+      .map(n => Number(n).toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  function recordStyle(prop, value) {
+    if (!selected) return;
+    const id = selected.dataset.veid;
+    edits[id] ||= {};
+    edits[id].style ||= {};
+    edits[id].style[prop] = value;
+  }
+
+  function applySavedEdits() {
+    for (const [id, change] of Object.entries(edits)) {
+      const el = $(`[data-veid="${id}"]`);
+      if (!el) continue;
+
+      if (typeof change.text === "string") el.textContent = change.text;
+      if (typeof change.href === "string" && el.tagName === "A")
+        el.setAttribute("href", change.href);
+      if (typeof change.src === "string" && el.tagName === "IMG")
+        el.setAttribute("src", change.src);
+
+      if (change.style) {
+        for (const [prop, value] of Object.entries(change.style)) {
+          el.style[prop] = value;
+        }
+      }
+    }
+
+    const order = originalContent.sectionOrder;
+    if (Array.isArray(order)) {
+      const panels = $$(".panel");
+      if (panels.length) {
+        const parent = panels[0].parentElement;
+        const byId = new Map(panels.map(el => [el.dataset.veid, el]));
+        const anchor = parent.querySelector(".cta");
+        order.forEach(id => {
+          const el = byId.get(String(id));
+          if (el && el.parentElement === parent)
+            parent.insertBefore(el, anchor || null);
+        });
+      }
+    }
+  }
+
+  function endEditing() {
+    editing = false;
+    document.body.classList.remove("ve-editing");
+    if (selected) selected.removeAttribute("data-ve-selected");
+    selected = null;
+    toggle.textContent = "✎ 編集モード";
+    panel.hidden = true;
+  }
+
+  toggle.addEventListener("click", async () => {
+    panel.hidden = !panel.hidden;
+    if (panel.hidden) {
+      endEditing();
+      return;
+    }
+
+    if (!currentUser) {
+      $("#ve-login").hidden = false;
+      $("#ve-tools").hidden = true;
+      status("管理者としてログインしてください。");
+      return;
+    }
+
+    editing = true;
+    document.body.classList.add("ve-editing");
+    $("#ve-login").hidden = true;
+    $("#ve-tools").hidden = false;
+    toggle.textContent = "✕ 編集を閉じる";
+    status("編集する場所をクリックしてください。");
+  });
+
+  $("#ve-login-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    status("ログイン中...");
+
+    const { data, error } = await db.auth.signInWithPassword({
+      email: $("#ve-email").value.trim(),
+      password: $("#ve-password").value
+    });
+
+    if (error) {
+      status("ログイン失敗: " + error.message);
+      return;
+    }
+
+    if (data.user.id !== ADMIN_UID) {
+      await db.auth.signOut();
+      status("このアカウントは管理者ではありません。");
+      return;
+    }
+
+    currentUser = data.user;
+    $("#ve-login").hidden = true;
+    $("#ve-tools").hidden = false;
+    editing = true;
+    document.body.classList.add("ve-editing");
+    toggle.textContent = "✕ 編集を閉じる";
+    status("ログイン成功！ 編集する場所をクリックするのだ。");
+  });
+
+  document.addEventListener("click", e => {
+    if (!editing || panel.contains(e.target) || e.target === toggle)
+      return;
+
+    const el = chooseTarget(e.target);
+    if (!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    selectElement(el);
+    status("選択中の場所を右側のパネルで編集できます。");
+  }, true);
+
+  $("#ve-text-apply").onclick = () => {
+    if (!selected) return status("先に編集したい場所をクリックしてね。");
+    if (selected.children.length)
+      return status("この要素には子要素があります。文章を壊さないよう、この欄での編集はできません。");
+
+    const value = $("#ve-text").value;
+    selected.textContent = value;
+    edits[selected.dataset.veid] ||= {};
+    edits[selected.dataset.veid].text = value;
+    status("文章を変更しました。保存ボタンで確定してね。");
+  };
+
+  $("#ve-href-apply").onclick = () => {
+    if (!(selected instanceof HTMLAnchorElement))
+      return status("リンクをクリックして選択してください。");
+
+    const value = $("#ve-href").value.trim();
+    if (!/^https?:\/\//i.test(value))
+      return status("リンクは https:// または http:// から入力してください。");
+
+    selected.setAttribute("href", value);
+    edits[selected.dataset.veid] ||= {};
+    edits[selected.dataset.veid].href = value;
+    status("リンク先を変更しました。");
+  };
+
+  $("#ve-src-apply").onclick = () => {
+    if (!(selected instanceof HTMLImageElement))
+      return status("画像をクリックして選択してください。");
+
+    const value = $("#ve-src").value.trim();
+    if (!/^https:\/\//i.test(value))
+      return status("画像URLは https:// から入力してください。");
+
+    selected.setAttribute("src", value);
+    edits[selected.dataset.veid] ||= {};
+    edits[selected.dataset.veid].src = value;
+    status("画像URLを変更しました。");
+  };
+
+  $("#ve-color-apply").onclick = () => {
+    if (!selected) return status("先に場所を選択してください。");
+    selected.style.color = $("#ve-color").value;
+    recordStyle("color", selected.style.color);
+    status("文字色を変更しました。");
+  };
+
+  $("#ve-bg-apply").onclick = () => {
+    if (!selected) return status("先に場所を選択してください。");
+    selected.style.backgroundColor = $("#ve-bg").value;
+    recordStyle("backgroundColor", selected.style.backgroundColor);
+    status("背景色を変更しました。");
+  };
+
+  $("#ve-width-apply").onclick = () => {
+    if (!selected) return status("先に場所を選択してください。");
+    const value = $("#ve-width").value.trim();
+    if (!/^(auto|\d{1,3}(\.\d+)?%)$/.test(value))
+      return status("幅は auto、または 1%〜100% の形式で入力してください。");
+    selected.style.width = value;
+    recordStyle("width", value);
+    status("幅を変更しました。");
+  };
+
+  function moveSection(direction) {
+    if (!selected) return status("先にセクションを選択してください。");
+    const section = selected.closest(".panel");
+    if (!section) return status("タブ内のセクションを選択してください。");
+
+    const panels = $$(".panel").filter(el =>
+      el.parentElement === section.parentElement
+    );
+    const index = panels.indexOf(section);
+    const next = panels[index + direction];
+    if (!next) return status("これ以上移動できません。");
+
+    if (direction < 0) section.parentElement.insertBefore(section, next);
+    else section.parentElement.insertBefore(next, section);
+
+    originalContent.sectionOrder = $$(".panel")
+      .filter(el => el.parentElement === section.parentElement)
+      .map(el => el.dataset.veid);
+
+    status("セクションの順番を変更しました。保存してね。");
+  }
+
+  $("#ve-up").onclick = () => moveSection(-1);
+  $("#ve-down").onclick = () => moveSection(1);
+
+  $("#ve-save").onclick = async () => {
+    if (!currentUser || currentUser.id !== ADMIN_UID)
+      return status("管理者ログインが必要です。");
+
+    status("保存中...");
+    const { data, error: readError } = await db
+      .from("site_content")
+      .select("content")
+      .eq("id", 1)
+      .single();
+
+    if (readError) return status("読み込みエラー: " + readError.message);
+
+    const content = {
+      ...(data.content || {}),
+      visual_edits: edits
+    };
+
+    if (originalContent.sectionOrder)
+      content.sectionOrder = originalContent.sectionOrder;
+
+    const { error } = await db
+      .from("site_content")
+      .update({ content })
+      .eq("id", 1);
+
+    if (error) return status("保存エラー: " + error.message);
+    status("保存成功！ 公開サイトに変更を保存しました。");
+  };
+
+  $("#ve-reload").onclick = async () => {
+    if (!confirm("保存されていない変更は失われます。再読み込みしますか？"))
+      return;
+    location.reload();
+  };
+
+  $("#ve-exit").onclick = endEditing;
+
+  $("#ve-logout").onclick = async () => {
+    await db.auth.signOut();
+    currentUser = null;
+    endEditing();
+    status("ログアウトしました。");
+  };
+
+  async function init() {
+    const { data: sessionData } = await db.auth.getSession();
+    if (sessionData.session?.user?.id === ADMIN_UID)
+      currentUser = sessionData.session.user;
+
+    const { data, error } = await db
+      .from("site_content")
+      .select("content")
+      .eq("id", 1)
+      .maybeSingle();
+
+    if (error) {
+      status("保存内容の読み込みに失敗しました: " + error.message);
+      return;
+    }
+
+    originalContent = data?.content || {};
+    edits = originalContent.visual_edits || {};
+    applySavedEdits();
+
+    status("準備完了。編集モードを押して始めよう。");
+  }
+
+  init().catch(error => status("エラー: " + error.message));
 })();
 </script>
-</body>
-</html>
