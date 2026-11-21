@@ -1,248 +1,491 @@
 <!DOCTYPE html>
+
 <html lang="ja" data-motion="on">
+
 <head>
+
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" content="選挙もイベントも大会もある、にぎやかなDiscordサーバー maison de vacancier">
+
 <title>maison de vacancier</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#151326;--surface:#211d38;--ink:#f5f1ff;--muted:#c2b9dc;--line:#40385f;--orange:#a78bfa;--orange-ink:#19132b;--violet:#c4b5fd;--glow:rgba(167,139,250,.20);}
-@media (prefers-color-scheme: light){:root{--bg:#f7f5ff;--surface:#ffffff;--ink:#28213d;--muted:#716887;--line:#ddd5f0;--orange:#7652d6;--orange-ink:#fff;--violet:#7652d6;--glow:rgba(118,82,214,.13);}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.8;font-weight:500;background-image:radial-gradient(circle at 85% 0,var(--glow),transparent 45%)}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-a{color:inherit}
-.event{overflow:hidden;white-space:nowrap;padding:8px 0;background:var(--orange);color:var(--orange-ink);font-weight:900}
-.event .track{display:inline-block;animation:marq 26s linear infinite}
-@keyframes marq{to{transform:translateX(-50%)}}
-.hero{padding:64px 0 52px;text-align:center}
-.small{color:var(--muted);margin:0 0 6px}
-h1{font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.15;margin:0 0 14px;font-weight:900;overflow-wrap:anywhere}
-.season-label{display:inline-block;border:2px solid var(--orange);color:var(--orange);border-radius:999px;padding:3px 16px;font-weight:700;margin:6px 0 24px;font-size:.95rem}
-.lead{color:var(--muted);margin:0 auto 30px;max-width:32em}
-.btn{display:inline-block;background:var(--orange);color:var(--orange-ink);font-weight:900;font-size:1.1rem;padding:14px 34px;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 rgba(0,0,0,.28);transition:transform .12s,box-shadow .12s}
-.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 rgba(0,0,0,.28)}
-.hint{display:block;margin-top:14px;font-size:.88rem;color:var(--muted)}
-section{padding:44px 0;border-top:1px solid var(--line)}
-h2{font-size:1.6rem;margin:0 0 6px;font-weight:900}
-.sub{color:var(--muted);margin:0 0 24px}
-.features{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
-.features li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
-.features .i{flex:none;font-size:1.3rem;line-height:1.5}
-.welcome{background:var(--surface);border:2px dashed var(--orange);border-radius:16px;padding:18px 22px;text-align:center;font-weight:900;font-size:1.1rem;margin-top:18px}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
-dt{color:var(--muted)}dd{margin:0;font-weight:700}
-.links{display:flex;flex-wrap:wrap;gap:12px}
-.links a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-weight:700;text-decoration:none}
-.cta{text-align:center;padding:56px 0 72px;border-top:1px solid var(--line)}
-.cta h2{font-size:2rem;margin-bottom:20px}
-footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 0 36px}
-.boost{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.boost div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.boost b{display:block;font-size:1.25rem;color:var(--orange)}.boost em{font-style:normal;font-weight:900;display:block;margin-bottom:4px}
-.note{color:var(--muted);font-size:.9rem;margin:14px 0 0}
-details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:900}details p,details ul{margin:10px 0 0;font-size:.95rem}details ul{padding-left:1.2em}details h3{font-size:.95rem;margin:12px 0 0;color:var(--muted)}
-ol.rules{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 22px 14px 44px;margin:0}
-ol.rules li{padding:7px 0;border-bottom:1px dashed var(--line)}ol.rules li:last-child{border-bottom:0}
-ol.rules .rt{display:block;font-weight:900}ol.rules .rd{display:block;color:var(--muted);font-size:.93rem;line-height:1.6}
-.pen{list-style:none;margin:10px 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
-ol.rules .pen li{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg);font-size:.9rem;line-height:1.5}
-.pen b{display:block;color:var(--orange)}ol.rules .pen li:last-child b{color:#ff6b6b}
-.pen-note{display:block;font-size:.9rem;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}
-@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.5}90%{opacity:.5}100%{transform:translateY(-115vh) rotate(40deg);opacity:0}}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
-.floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.floaters span{position:absolute;bottom:-60px;opacity:0;animation:rise linear infinite}
-.wrap,.event,footer{position:relative;z-index:1}
-body{background-image:radial-gradient(circle at 85% 0,var(--glow),transparent 45%),radial-gradient(var(--line) 1px,transparent 1.3px);background-size:auto,24px 24px}
-h1,h2{font-family:"Dela Gothic One","Zen Maru Gothic",sans-serif;font-weight:400;letter-spacing:.02em}
-h1{font-size:clamp(2.4rem,8.5vw,5rem);line-height:1.1}
-.hero{text-align:left;padding:52px 0 40px}.lead{margin-left:0}
-h2{display:inline-block;margin-left:-6px;padding:0 6px;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--orange) 45%,transparent) 62%)}
-h1 .word{display:inline-block;white-space:nowrap}
-h1 .ch{display:inline-block;opacity:0;transform:translateY(.7em) rotate(8deg);animation:pop .7s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i)*50ms + 150ms)}
-@keyframes pop{to{opacity:1;transform:none}}
-.season-label{animation:float 3.2s ease-in-out infinite}@keyframes float{50%{transform:translateY(-5px)}}
-.btn.pulse{animation:glow 2.4s ease-in-out infinite}.btn.pulse:hover{animation:none}
-@keyframes glow{0%,100%{box-shadow:0 5px 0 rgba(0,0,0,.28),0 0 0 0 var(--glow)}50%{box-shadow:0 5px 0 rgba(0,0,0,.28),0 0 0 16px transparent}}
-.tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 4px;padding:8px 20px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px)}
-.tabbar button{flex:none;font:inherit;font-weight:900;background:none;border:0;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s,transform .15s}
-.tabbar button:first-child{margin-left:auto}.tabbar button:last-child{margin-right:auto}
-.tabbar button[aria-selected="true"]{background:var(--orange);color:var(--orange-ink)}
-.panel{display:none}.panel.on{display:block}
-.panel.on>*{animation:up .55s cubic-bezier(.2,.8,.2,1) both}
-.panel.on .stag{animation:up .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*60ms)}
-@keyframes up{from{opacity:0;transform:translateY(20px)}}
-.features li,.boost div,details,.links a,dl,ol.rules,.welcome{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--orange)}
-.welcome{border-style:solid;animation:shine 3.5s linear infinite;background-image:linear-gradient(110deg,transparent 40%,var(--glow) 50%,transparent 60%);background-size:250% 100%}
-@keyframes shine{from{background-position:150% 0}to{background-position:-50% 0}}
-.features li:hover,.boost div:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--orange)}
-.features li,.boost div{transition:transform .2s,box-shadow .2s}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:22px 0 0}
-.chips li{border:2px solid var(--ink);border-radius:999px;padding:3px 14px;font-weight:700;font-size:.88rem;background:var(--surface)}
-.fxbtn{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;font:inherit;font-weight:900;font-size:.85rem;background:var(--surface);color:var(--ink);border:2px solid var(--orange);border-radius:999px;padding:8px 16px;cursor:pointer}
-html[data-motion="off"] *{animation:none!important;transition:none!important}
-html[data-motion="off"] .floaters{display:none}html[data-motion="off"] h1 .ch{opacity:1!important;transform:none!important}
+
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+
+:root{--bg:#fff7f1;--ink:#2b1a1c;--mut:#6b5558;--line:rgba(130,40,50,.18);--card:rgba(255,255,255,.74);--a:#c62839;--b:#1f7a46;--c:#b8860b;--lit:1;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08150f;--ink:#fff3e8;--mut:#bccdc1;--line:rgba(255,205,185,.18);--card:rgba(14,38,28,.62);--a:#f2475a;--b:#3ddc84;--c:#ffd166;--lit:0;color-scheme:dark}}
+
+:root[data-theme="dark"]{--bg:#08150f;--ink:#fff3e8;--mut:#bccdc1;--line:rgba(255,205,185,.18);--card:rgba(14,38,28,.62);--a:#f2475a;--b:#3ddc84;--c:#ffd166;--lit:0;color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(88px + env(safe-area-inset-top,0px));scrollbar-color:var(--a) transparent;scrollbar-width:thin}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:500 1rem/1.85 "Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;overflow-x:hidden;word-break:auto-phrase}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+
+p{text-wrap:pretty}
+
+:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:8px}
+
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;transition:top .2s}.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+main,nav,footer{position:relative;z-index:2}
+
+.bar{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;scale:0 1;transform-origin:0 50%;background:linear-gradient(90deg,var(--a),var(--b),var(--c));z-index:70}
+
+.glow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--a) 28%,transparent),transparent 65%);pointer-events:none;z-index:1;will-change:transform}
+
+nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;translate:-50% 0;z-index:50;display:flex;align-items:center;gap:2px;max-width:calc(100vw - 20px);overflow-x:auto;scrollbar-width:none;padding:6px;border-radius:999px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4)}
+
+nav a,nav button{flex:none;font:inherit;text-decoration:none;color:var(--mut);font-weight:900;font-size:.85rem;padding:7px 14px;border-radius:999px;border:0;background:none;cursor:pointer;transition:color .3s,*background* .3s}
+
+nav a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+
+nav a:hover,nav button:hover{color:var(--ink)}nav a[aria-current="true"]:hover{color:var(--bg)}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 70px;position:relative}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(10px);border-radius:999px;padding:4px 16px;font-weight:700;font-size:.9rem;color:var(--mut)}
+
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:ping 2s infinite}
+
+@keyframes ping{0%{box-shadow:0 0 0 0 #4ade80}70%,100%{box-shadow:0 0 0 10px transparent}}
+
+h1,h2{font-family:"Dela Gothic One","Zen Maru Gothic",sans-serif;font-weight:400;line-height:1.08;margin:0;text-wrap:balance}
+
+h1{font-size:clamp(2.6rem,10.5vw,7.4rem);margin:22px 0 18px;overflow-wrap:anywhere}
+
+h1 .w{display:inline-block;white-space:nowrap}
+
+h1 .ch{display:inline-block;animation:chin .9s cubic-bezier(.2,.9,.2,1) both;animation-delay:calc(var(--i)*45ms + 200ms);background:linear-gradient(180deg,var(--ink) 30%,color-mix(in oklab,var(--a) 70%,var(--ink)));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+@keyframes chin{from{opacity:0;filter:blur(14px);translate:0 .6em;scale:1.15}}
+
+.lead{font-size:clamp(1rem,2.4vw,1.25rem);color:var(--mut);max-width:34em;margin:0 0 30px}.lead b{color:var(--ink)}
+
+.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:10px;overflow:visible;text-decoration:none;font-weight:900;font-size:1.05rem;color:#fff;padding:15px 32px;border-radius:999px;background:var(--a);background:linear-gradient(in oklch 110deg,var(--a),#8f1020);transition:translate .25s,box-shadow .25s}
+
+.btn::before{content:"";position:absolute;inset:-3px;z-index:-1;border-radius:inherit;background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));filter:blur(10px);opacity:.75;animation:spin 3.5s linear infinite}
+
+@keyframes spin{to{--ang:360deg}}
+
+.btn:hover::before{opacity:1}
+
+.hint{display:block;margin-top:14px;font-size:.88rem;color:var(--mut)}
+
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+
+.stat{border:1px solid var(--line);background:var(--card);backdrop-filter:blur(12px);border-radius:18px;padding:12px 20px;min-width:140px}
+
+.stat b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:1.6rem;line-height:1.3}.stat span{color:var(--mut);font-size:.85rem}
+
+.cue{position:absolute;left:50%;bottom:22px;width:22px;height:36px;margin-left:-11px;border:2px solid var(--mut);border-radius:12px;opacity:.6}
+
+.cue::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--mut);animation:wheel 1.6s infinite}
+
+@keyframes wheel{to{translate:0 12px;opacity:0}}
+
+.mq{overflow:hidden;border-block:1px solid var(--line);background:color-mix(in oklab,var(--bg) 60%,transparent);backdrop-filter:blur(8px);padding:14px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+
+.mq+.mq{border-top:0}
+
+.mt{display:flex;width:max-content;animation:mq 40s linear infinite}.mq.r .mt{animation-direction:reverse;animation-duration:48s}
+
+.mq:hover .mt{animation-play-state:paused}
+
+.mt span{padding-right:16px;font-family:"Dela Gothic One",sans-serif;font-size:clamp(1.2rem,3vw,2rem);white-space:nowrap;color:transparent;-webkit-text-stroke:1px var(--mut)}
+
+.mt span:nth-child(even){color:var(--ink);-webkit-text-stroke:0}
+
+@keyframes mq{to{translate:-50% 0}}
+
+section{padding:110px 0 30px}
+
+.kick{color:var(--a);font-weight:900;letter-spacing:.2em;font-size:.8rem;margin:0 0 10px}
+
+h2{font-size:clamp(1.9rem,5.5vw,3.4rem)}
+
+.sub{color:var(--mut);margin:12px 0 36px}
+
+/* reveal: native scroll-driven where supported, IntersectionObserver otherwise */
+
+@supports ((animation-timeline:view()) and (animation-range:entry)){
+
+ @media (prefers-reduced-motion:no-preference){
+
+  html[data-motion="on"] .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 38%}
+
+  @keyframes rv{from{opacity:0;translate:0 40px;filter:blur(6px)}}
+
+ }
+
+}
+
+@supports not ((animation-timeline:view()) and (animation-range:entry)){
+
+ html[data-motion="on"] .rv{transition:opacity .8s cubic-bezier(.2,.8,.2,1),translate .8s cubic-bezier(.2,.8,.2,1),filter .8s;transition-delay:calc(var(--d,0)*70ms)}
+
+ html[data-motion="on"] .rv:not(.in){opacity:0;translate:0 34px;filter:blur(6px)}
+
+}
+
+@supports (animation-timeline:scroll()){
+
+ @media (prefers-reduced-motion:no-preference){
+
+  html[data-motion="on"] .hero-in{animation:hout linear both;animation-timeline:scroll();animation-range:0 90svh}
+
+  @keyframes hout{to{opacity:0;translate:0 12svh;scale:.92}}
+
+  html[data-motion="on"] .bar{animation:bar linear both;animation-timeline:scroll(root)}
+
+  @keyframes bar{to{scale:1 1}}
+
+ }
+
+}
+
+.card{position:relative;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:24px;padding:22px;overflow:hidden;transition:border-color .3s}
+
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),color-mix(in oklab,var(--a) 26%,transparent),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+
+.card:hover{border-color:color-mix(in oklab,var(--a) 60%,transparent)}.card:hover::before{opacity:1}
+
+.card>*{position:relative}
+
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:0;margin:0;list-style:none}
+
+.bento .card{grid-column:span 2;display:flex;flex-direction:column;gap:10px;min-height:150px}
+
+.bento .card:nth-child(1),.bento .card:nth-child(6){grid-column:span 3}.bento .card:nth-child(4){grid-column:span 4}
+
+.bento .e{font-size:2rem;line-height:1}.bento p{margin:0;font-weight:900;font-size:1.05rem}
+
+.big{margin-top:16px;text-align:center;font-family:"Dela Gothic One",sans-serif;font-size:clamp(1.2rem,3.6vw,2rem);padding:34px 20px;background-image:linear-gradient(110deg,transparent 30%,color-mix(in oklab,var(--a) 22%,transparent) 50%,transparent 70%);background-size:250% 100%;animation:sh 4s linear infinite}
+
+@keyframes sh{from{background-position:150% 0}to{background-position:-50% 0}}
+
+.boost{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;perspective:900px;padding:0;margin:0;list-style:none}
+
+.boost .card{transform-style:preserve-3d;transition:transform .15s ease-out,border-color .3s}
+
+.boost b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:3rem;line-height:1;background:linear-gradient(120deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.boost b small{font-size:1rem}.boost em{display:block;font-style:normal;font-weight:900;font-size:1.1rem;margin:8px 0 6px}.boost p{margin:0;color:var(--mut);font-size:.93rem}
+
+.note{color:var(--mut);font-size:.9rem;margin:16px 0 0}
+
+.tools{display:flex;justify-content:flex-end;margin:-18px 0 14px}
+
+.tools button{font:inherit;font-weight:900;font-size:.85rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
+
+.acc{display:grid;gap:10px}
+
+.acc details.card{padding:0}
+
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;font-weight:900;font-size:1.05rem;position:relative}
+
+.acc summary::-webkit-details-marker{display:none}
+
+.acc summary::before{content:"";flex:none;width:.55em;height:.55em;border-right:2px solid currentColor;border-bottom:2px solid currentColor;rotate:-45deg;margin-inline:.2em .1em}
+
+.acc details[open]>summary::before{rotate:45deg}
+
+@media (prefers-reduced-motion:no-preference){.acc summary::before{transition:rotate .25s}}
+
+details::details-content{interpolate-size:allow-keywords;overflow:clip;contain:layout}
+
+details:not([open])::details-content{block-size:0}
+
+@media (prefers-reduced-motion:no-preference){details::details-content{transition:block-size,content-visibility,display;transition-duration:.45s;transition-timing-function:cubic-bezier(.2,.8,.2,1);transition-behavior:allow-discrete}}
+
+.pn{padding:0 22px 20px;position:relative}
+
+.pn h3{font-size:.8rem;letter-spacing:.14em;color:var(--a);margin:14px 0 4px}.pn ul{margin:0;padding-left:1.2em;color:var(--mut);font-size:.95rem}.pn p{margin:0;color:var(--mut);font-size:.95rem}
+
+ol.rules{display:grid;gap:10px;margin:0;padding:0;list-style:none}#rl{counter-reset:r}
+
+.rule{counter-increment:r;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:16px 22px}
+
+.rule::after{content:counter(r);grid-row:1;grid-column:1;font-family:"Dela Gothic One",sans-serif;font-size:1.7rem;line-height:1.2;color:transparent;-webkit-text-stroke:1px var(--a);min-width:2ch}
+
+.rule>div{grid-row:1;grid-column:2}
+
+.rule b{display:block;font-weight:900}.rule span{color:var(--mut);font-size:.93rem;display:block;line-height:1.65}
+
+.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0 8px}
+
+.ladder div{border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:.88rem;line-height:1.5;background:color-mix(in oklab,var(--bg) 55%,transparent);position:relative;overflow:hidden}
+
+.ladder div::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--w);background:linear-gradient(90deg,var(--a),var(--b))}
+
+.ladder div:last-child::after{background:#ff4d5e}
+
+.ladder b{display:block;color:var(--a)}.ladder div:last-child b{color:#ff4d5e}
+
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+.about dt{color:var(--mut);font-size:.85rem}.about dd{margin:0 0 10px;font-weight:900;font-size:1.2rem}
+
+.links{display:flex;flex-direction:column;gap:10px}
+
+.links a{display:flex;justify-content:space-between;color:inherit;text-decoration:none;font-weight:900;padding:14px 18px;border:1px solid var(--line);border-radius:16px;transition:translate .25s,border-color .25s,*background* .25s}
+
+.links a:hover{translate:6px 0;border-color:var(--a);background:color-mix(in oklab,var(--a) 14%,transparent)}
+
+.staff{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+
+.staff h3{margin:0 0 8px;font-size:.85rem;color:var(--a);letter-spacing:.06em}.staff p{margin:0;font-weight:900;font-size:1.1rem}
+
+.cta{text-align:center;padding:160px 0 110px}.cta h2{font-size:clamp(2.4rem,9vw,6rem);margin-bottom:28px}
+
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:0 0 40px}
+
+.fx{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;font:inherit;font-weight:900;font-size:.82rem;color:var(--ink);background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+
+#snow{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+.lights{position:absolute;left:0;right:0;top:0;height:30px;display:flex;justify-content:space-around;pointer-events:none}
+
+.lights::before{content:"";position:absolute;left:0;right:0;top:2px;height:2px;background:color-mix(in oklab,var(--ink) 30%,transparent)}
+
+.lights i{display:block;width:10px;height:16px;margin-top:4px;border-radius:50% 50% 45% 45%;background:var(--bc);box-shadow:0 0 16px 2px var(--bc);animation:tw 2.6s ease-in-out infinite;animation-delay:calc(var(--k)*-.37s)}
+
+.lights i:nth-child(3n){--bc:var(--c)}.lights i:nth-child(3n+1){--bc:var(--a)}.lights i:nth-child(3n+2){--bc:var(--b)}
+
+@keyframes tw{50%{opacity:.35;scale:.9}}
+
+.grp{display:flex;align-items:center;gap:12px;margin:34px 0 14px;font-size:.95rem;font-weight:900;color:var(--a);letter-spacing:.08em}
+
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.grp:first-child{margin-top:0}
+
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
+@media (max-width:720px){.bento .card,.bento .card:nth-child(n){grid-column:span 6}.glow{display:none}.rule{padding:14px 16px}}
+
+@media (forced-colors:active){.card,.stat,.ladder div{border:1px solid CanvasText}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+html[data-motion="off"] *,html[data-motion="off"] *::before,html[data-motion="off"] *::after{animation:none!important;transition:none!important}
+
+html[data-motion="off"] .glow,html[data-motion="off"] .cue{display:none}
+
 </style>
+
 </head>
+
 <body>
-<div class="floaters" id="floaters" aria-hidden="true"></div>
-<div class="event" role="status" aria-label="maison de vacancier"><div class="track" aria-hidden="true"><span>✦ maison de vacancier へようこそ　　✦ 交流・イベント・大会を楽しもう　　✦ maison de vacancier へようこそ　　</span><span>✦ maison de vacancier へようこそ　　✦ 交流・イベント・大会を楽しもう　　✦ maison de vacancier へようこそ　　</span></div></div>
+
+<a class="skip" href="#features">本文へスキップ</a>
+
+<canvas id="gl" aria-hidden="true"></canvas><div class="grain" aria-hidden="true"></div><div class="glow" id="glow" aria-hidden="true"></div><canvas id="snow" aria-hidden="true"></canvas><div class="bar" id="bar" aria-hidden="true"></div>
+
+<nav aria-label="ページ内メニュー"><a href="#top" aria-current="true">ホーム</a><a href="#features">特徴</a><a href="#boost">ブースト</a><a href="#roles">ロール</a><a href="#rules">ルール</a><a href="#about">情報</a><a href="#staff">運営</a><button id="th" type="button" aria-label="テーマを切り替え">◐</button></nav>
+
+<main>
+
+<header class="hero" id="top"><div class="wrap hero-in">
+
+<span class="eyebrow"><i></i>ようこそ！ いつでも気軽に楽しめる</span>
+
+<h1 id="t">maison de vacancier</h1>
+
+<p class="lead"><b>選挙もイベントも大会もある、にぎやかなDiscordサーバー。</b><br>見る専・宣伝のみ・即抜けも大歓迎です。</p>
+
+<a class="btn" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener" data-mag>サーバーに参加する <span aria-hidden="true">→</span></a>
+
+<span class="hint">招待リンクを開くと、Discordが立ち上がります。</span>
+
+<div class="stats">
+
+
+
+<div class="stat"><b id="days">0</b><span>創設からの日数</span></div>
+
+<div class="stat"><b>2026.02.12</b><span>創設</span></div>
+
+<div class="stat"><b>暇人軍団</b><span>サーバータグ</span></div>
+
+<div class="stat"><b>ひまじん</b><span>鯖主</span></div>
+
+</div></div><div class="cue" aria-hidden="true"></div></header>
+
+<div class="mq" aria-hidden="true"><div class="mt" id="m1"></div></div>
+
+<div class="mq r" aria-hidden="true"><div class="mt" id="m2"></div></div>
+
 <div class="wrap">
-  <header class="hero">
-    <p class="small">ようこそ!</p>
-    <h1>maison de vacancier</h1>
-    <span class="season-label">いつでも気軽に楽しめる、いつもの maison de vacancier</span>
-    <p class="lead">選挙もイベントも大会もある、にぎやかなDiscordサーバー。見る専・宣伝のみ・即抜けも大歓迎です。</p>
-    <a class="btn" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">サーバーに参加する</a>
-    <span class="hint">招待リンクを開くと、Discordが立ち上がります。</span>
-    <ul class="chips"><li>🗓 2026.02.12 創設</li><li>🏷 タグ「暇人軍団」</li><li>👑 鯖主 ひまじん</li></ul>
-  </header>
-  <div class="tabbar" role="tablist" aria-label="メニュー">
-    <button role="tab" data-go="features" aria-selected="true">✨ 特徴</button><button role="tab" data-go="boost" aria-selected="false">🚀 ブースト特典</button><button role="tab" data-go="roles" aria-selected="false">👑 ロール</button><button role="tab" data-go="rules" aria-selected="false">📜 ルール</button><button role="tab" data-go="info" aria-selected="false">ℹ️ 情報</button><button role="tab" data-go="staff" aria-selected="false">🛡️ 現在の運営</button>
-  </div>
-<section class="panel on" data-tab="features">
-<h2>このサーバーの特徴</h2><p class="sub">気になるところだけ使ってもOKです。</p>
-<ul class="features"><li><span class="i">🗳️</span>定期的に選挙が行われる</li>
-<li><span class="i">📣</span>多数の宣伝チャンネルで宣伝可能</li>
-<li><span class="i">😊</span>民度がとにかくいい</li>
-<li><span class="i">🎙️</span>VCが活発に動いている</li>
-<li><span class="i">🏆</span>個人主催の大会が開催できる</li>
-<li><span class="i">🎉</span>定期的にイベントが開催</li>
-<li><span class="i">🎁</span>常時開催のイベントで豪華な報酬がもらえる</li>
-<li><span class="i">🤝</span>メンバー数に関係なく連携可能</li>
-<li><span class="i">⛏️</span>このサーバー直属のマイクラサーバーがある</li></ul><div class="welcome">見る専・宣伝のみ・即抜け大歓迎!</div></section>
-<section class="panel" data-tab="boost">
-<h2>ブースト特典</h2><p class="sub">サーバーをブーストすると、数に応じてロールと特典がもらえます。</p>
 
+<section id="features" aria-labelledby="h-f"><p class="kick rv">FEATURES</p><h2 id="h-f" class="rv">このサーバーの特徴</h2><p class="sub rv">気になるところだけ使ってもOKです。</p><ul class="bento" id="bento"></ul><div class="card big rv" data-spot>見る専・宣伝のみ・即抜け大歓迎！</div></section>
 
-    
-    
-    <div class="boost">
-      <div><b>1ブースト</b><em>サーバー貢献者</em>仕事場で稼ぐコインが1.1倍。vip宣伝(1h)とブースター専用宣伝場(1h)で宣伝できる。</div>
-      <div><b>2ブースト</b><em>最高のサーバー貢献者</em>一部イベントで優遇措置を受けられる。</div>
-      <div><b>5ブースト</b><em>神</em>神専用宣伝場(2h)で宣伝できる。</div>
-      <div><b>10ブースト</b><em>GOD</em>管理者より少し弱い権限が与えられる。</div>
-    </div>
-    <p class="note">ブーストが切れると、これらの報酬は剥奪されます。</p>
-  </section>
-<section class="panel" data-tab="roles">
-<h2>特殊・貢献者ロール</h2><p class="sub">タップすると詳細が開きます。(下のロールほど上位に表示されます)</p>
+<section id="boost" aria-labelledby="h-b"><p class="kick rv">BOOST</p><h2 id="h-b" class="rv">ブースト特典</h2><p class="sub rv">サーバーをブーストすると、数に応じてロールと特典がもらえます。</p><ul class="boost" id="boosts"></ul><p class="note rv">ブーストが切れると、これらの報酬は剥奪されます。</p></section>
 
+<section id="roles" aria-labelledby="h-r"><p class="kick rv">ROLES</p><h2 id="h-r" class="rv">特殊・貢献者ロール</h2><p class="sub rv">タップすると詳細が開きます。（下のロールほど上位に表示されます）</p><div class="tools"><button id="all" type="button" aria-expanded="false">すべて開く</button></div><div class="acc" id="acc"></div><p class="note rv">これらのロールはすべて、表示名がグラデーションになり、管理職ロールの次に上位に表示され、オンラインメンバー一覧で別枠表示されます。</p></section>
 
-    
-    
-    <details><summary>サーバー貢献人</summary>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li></ul>
-      <h3>入手方法</h3><ul><li>不定期開催のメンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>最高のサーバー貢献人</summary>
-      <h3>特典</h3><ul><li>一部イベントで優遇措置を受けられる</li></ul>
-      <h3>入手方法</h3><ul><li>不定期開催のメンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>サーバー貢献者</summary>
-      <h3>特典</h3><ul><li>ブースター専用宣伝場(1h)とvip宣伝(1h)で宣伝できる</li><li>常時開催の資金管理イベントで稼げるコインが1.1倍</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>サーバーを1ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>最高のサーバー貢献者</summary>
-      <h3>特典</h3><ul><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>サーバーを2ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>神</summary>
-      <h3>特典</h3><ul><li>神専用宣伝場(2h)とvip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>常時開催のランクアップイベントで、もらえるxpが1.2倍</li><li>「個人的なお知らせ」で話せる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル28に到達する</li><li>資金管理イベントのshopで500000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li><li>サーバーを5ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>GOD</summary>
-      <h3>特典</h3><ul><li>管理者より少し弱い権限が与えられる</li><li>vip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に専用の絵文字が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル45に到達する</li><li>資金管理イベントのshopで10000000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li><li>サーバーを10ブーストする(ブーストが切れたら剥奪)</li></ul></details>
-    <details><summary>永久名誉鯖民(歴代獲得者0人)</summary>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li><li>一部イベントで優遇措置を受けられる</li><li>表示名の横に💎が付く</li></ul>
-      <h3>入手方法</h3><ul><li>ランクアップイベントでレベル90に到達する</li><li>資金管理イベントのshopで9000000000000コインで購入する</li><li>メンバー招待イベント中に、一定数のメンバーを招待する</li></ul></details>
-    <details><summary>固有ロール(鯖主が認めた1人だけ)</summary>
-      <p>最強の貢献人・ベンジリー / 睡眠宣言の神 / 最高のディーラー! / 万年管理職 / 浮上率の神 / ブーストの神</p>
-      <h3>特典</h3><ul><li>vip宣伝(1h)で宣伝できる</li><li>貢献者ロールの中で、いちばん上に表示される</li><li>ロール名と色を、もらった本人が決められる</li></ul>
-      <h3>入手方法</h3><ul><li>鯖主に、サーバーへ多大な貢献をしたと認められたメンバー1人にだけ付与される</li></ul></details>
-    <p class="note">これらのロールはすべて、表示名がグラデーションになり、管理職ロールの次に上位に表示され、オンラインメンバー一覧で別枠表示されます。</p>
-  </section>
-<section class="panel" data-tab="rules">
-<h2>ルール</h2><p class="sub">みんなで気持ちよく過ごすために、参加前に読んでください。</p>
-<ol class="rules">
-      <li><b class="rt">下ネタは専用チャンネルだけ</b><span class="rd">「下ネタ雑談」と「あーるじゅうはち」以外では禁止です。</span></li>
-      <li><b class="rt">雰囲気を悪くする発言はNG</b><span class="rd">他人が傷つく発言や、管理者が悪質と判断した発言は控えてください。</span></li>
-      <li><b class="rt">スパム・運営の妨害は禁止</b><span class="rd">過度なスパムや、鯖運営の妨害・遅延などの行為は固く禁じます。</span></li>
-      <li><b class="rt">不謹慎・宗教・差別的な発言はNG</b><span class="rd">これらの発言はやめてください。</span></li>
-      <li><b class="rt">公の場での喧嘩はNG</b><span class="rd">サーバーの雰囲気が悪くなるので、やめましょう。</span></li>
-      <li><b class="rt">管理者について</b><span class="rd">管理者は、緊急事態以外では「管理者たち」ロールを付けたメンバーのみとします。</span></li>
-      <li><b class="rt">引き抜きは控える</b><span class="rd">引き抜き行為などは控えてください。</span></li>
-      <li><b class="rt">サブアカウントは申請制</b><span class="rd">「目安箱」で入れたいサブアカウントをメンションし、管理者の認証を受けてください。</span></li>
-      <li><b class="rt">宣伝は宣伝場だけ</b><span class="rd">宣伝場以外での宣伝はやめましょう。</span></li>
-      <li><b class="rt">違反したときの対応</b><span class="rd">ルール1〜9を破った回数で、対応が変わります。</span>
-        <ul class="pen">
-          <li><b>1回目</b>違反者1のロール<br>1時間タイムアウト</li>
-          <li><b>2回目</b>違反者2のロール<br>1日タイムアウト</li>
-          <li><b>3回目</b>違反者3のロール<br>1週間タイムアウト</li>
-          <li><b>4回目以降</b>特例がない限り<br>サーバーからBAN</li>
-        </ul>
-        <span class="pen-note">⚠️ ルール15・16(法律の遵守、個人情報)を破ると、2回分の違反として扱います。</span></li>
-      <li><b class="rt">GODロールでの荒らしは即BAN</b><span class="rd">GODロールを使った荒らしを確認した場合、直ちにBANします。</span></li>
-      <li><b class="rt">深夜(21:00〜6:00)のメンション</b><span class="rd">「雑談メンションOK」系列をメンションするときは、「深夜の雑談メンションOK」系列を使いましょう。(管理者の重要なお知らせは例外)</span></li>
-      <li><b class="rt">「無法地帯」はルール適用外</b><span class="rd">「無法地帯」(2か所)では、スパムや下ネタも違反になりません。</span></li>
-      <li><b class="rt">鯖主について</b><span class="rd">鯖主は基本的に「ひまじん」(てめえらの非常食 ※口悪いです あと鯖主です)です。</span></li>
-      <li><b class="rt">日本の法律を守る</b><span class="rd">日本国の法律を遵守してください。</span></li>
-      <li><b class="rt">個人情報をばらさない</b><span class="rd">人の個人情報をばらすような発言はしないでください。</span></li>
-      <li><b class="rt">宣伝場以外で宣伝したとき</b><span class="rd">違反者の判定はしませんが、メッセージの削除と1時間のタイムアウトになります。</span></li>
-      <li><b class="rt">トラブルが起きたら</b><span class="rd">ユーザー間、またはユーザーと運営・サーバーとの間のトラブルは、当事者間で誠実に解決します。裁判上の紛争になった場合は、鯖主の居住地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とします。</span></li>
-      <li><b class="rt">全力で楽しもう</b><span class="rd">このサーバーを全力で楽しみましょう。</span></li>
-    </ol></section>
-<section class="panel" data-tab="info">
-<h2>サーバー情報</h2><p class="sub">&nbsp;</p>
-<dl>
-      <dt>鯖主</dt><dd>ひまじん</dd>
-      <dt>創設日</dt><dd>2026年2月12日</dd>
-      <dt>サーバータグ</dt><dd>暇人軍団</dd>
-    </dl><h2 style="margin-top:30px">リンク</h2><p class="sub">&nbsp;</p><div class="links">
-      <a href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">Discord招待リンク</a>
-      <a href="https://x.com/maison_de_vacan" target="_blank" rel="noopener">公式X(Twitter)</a>
-    </div></section>
+<section id="rules" aria-labelledby="h-u"><p class="kick rv">RULES</p><h2 id="h-u" class="rv">ルール</h2><p class="sub rv">みんなで気持ちよく過ごすために、参加前に読んでください。</p><div id="rl"></div></section>
 
-<section class="panel" data-tab="staff">
-<h2>現在の運営</h2>
-<p class="sub">maison de vacancier の現在の運営メンバーです。</p>
-<div class="boost">
-  <div><em>任期</em>2026年9月11日〜2027年1月11日（の予定）</div>
-  <div><b>〜副理事〜</b><em>ベンジリー</em></div>
-  <div><b>〜上級管理者〜</b><em>未定</em></div>
-  <div><b>〜管理者〜</b><em>ドパグマ</em></div>
-  <div><b>〜モデレーター〜</b><em>tetu23</em><em>minato</em><em>おじいちゃん（佐藤）</em></div>
-  <div><b>〜常任理事〜</b><em>ちょこほし</em><em>kigo7623</em><em>すぎのき</em><em>Στύξ</em></div>
-  <div><b>〜常任鯖主補佐〜</b><em>akage</em></div>
-  <div><b>〜maison de craft管理人〜</b><em>尾場加イッチ</em></div>
-</div>
-</section>
-  <div class="cta"><h2>待ってます!</h2><a class="btn" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">Discordで参加する</a></div>
-</div>
+<section id="about" aria-labelledby="h-a"><p class="kick rv">ABOUT</p><h2 id="h-a" class="rv">サーバー情報</h2><p class="sub rv">&nbsp;</p><div class="about"><div class="card rv" data-spot><dl style="margin:0"><dt>鯖主</dt><dd>ひまじん</dd><dt>創設日</dt><dd>2026年2月12日</dd><dt>サーバータグ</dt><dd>暇人軍団</dd></dl></div><div class="card rv" data-spot><div class="links"><a href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener">Discord招待リンク <span aria-hidden="true">↗</span></a><a href="https://x.com/maison_de_vacan" target="_blank" rel="noopener">公式X（Twitter） <span aria-hidden="true">↗</span></a></div></div></div></section>
+
+<section id="staff" aria-labelledby="h-s"><p class="kick rv">STAFF</p><h2 id="h-s" class="rv">現在の運営</h2><p class="sub rv">maison de vacancier の現在の運営メンバーです。</p><div class="staff" id="st"></div></section>
+
+<div class="cta"><h2 class="rv">待ってます！</h2><a class="btn rv" href="https://discord.gg/RH3dVkDkFk" target="_blank" rel="noopener" data-mag>Discordで参加する <span aria-hidden="true">→</span></a></div>
+
+</div></main>
+
 <footer>© maison de vacancier</footer>
-<button class="fxbtn" id="fx" type="button" aria-pressed="true">🎬 アニメ ON</button>
+
+<button class="fx" id="fx" type="button" aria-pressed="true">🎬 アニメ ON</button>
+
 <script>
+
 (function(){
-var root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var bar=document.querySelector('.tabbar'),tabs=[].slice.call(bar.querySelectorAll('button')),panels=[].slice.call(document.querySelectorAll('.panel'));
-var names=tabs.map(function(b){return b.getAttribute('data-go')});
-var fx=document.getElementById('fx');
-function setFx(on){root.setAttribute('data-motion',on?'on':'off');fx.textContent='\uD83C\uDFAC \u30A2\u30CB\u30E1 '+(on?'ON':'OFF')}
-setFx(!reduce);fx.addEventListener('click',function(){setFx(root.getAttribute('data-motion')!=='on')});
-var h1=document.querySelector('h1'),title=h1.textContent,n=0;h1.setAttribute('aria-label',title);h1.textContent='';
-title.split(' ').forEach(function(w,wi){if(wi)h1.appendChild(document.createTextNode(' '));var ws=document.createElement('span');ws.className='word';ws.setAttribute('aria-hidden','true');
-[].forEach.call(w,function(c){var s=document.createElement('span');s.className='ch';s.style.setProperty('--i',n++);s.textContent=c;ws.appendChild(s)});h1.appendChild(ws)});
-document.querySelector('.hero .btn').classList.add('pulse');
-var f=document.getElementById('floaters'),em=['\u2726','\u2727','\u2605','\u2728','\u25C7','\u2734'];
-for(var i=0;i<14;i++){var s=document.createElement('span');s.textContent=em[i%em.length];s.style.left=(Math.random()*96)+'%';s.style.fontSize=(18+Math.random()*26)+'px';s.style.animationDuration=(12+Math.random()*14)+'s';s.style.animationDelay=(-Math.random()*20)+'s';f.appendChild(s)}
-panels.forEach(function(p){[].forEach.call(p.querySelectorAll('.features li,.boost>div,details,ol.rules li,dl,.links a,.welcome'),function(el,i){el.classList.add('stag');el.style.setProperty('--i',Math.min(i,12))})});
-function show(name){if(names.indexOf(name)<0)name='features';
-panels.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-tab')===name)});
-tabs.forEach(function(b){var on=b.getAttribute('data-go')===name;b.setAttribute('aria-selected',on?'true':'false');if(on)b.scrollIntoView({block:'nearest',inline:'center'})});
-var hero=document.querySelector('.hero'),y=hero.getBoundingClientRect().bottom+window.scrollY;if(window.scrollY>y)window.scrollTo({top:y})}
-tabs.forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-go'))})});
-window.addEventListener('hashchange',function(){show(location.hash.slice(1))});show(location.hash.slice(1));
+
+var R=document.documentElement,$=function(s){return document.querySelector(s)},reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(pointer:fine)').matches,on=function(){return R.getAttribute('data-motion')==='on'};
+
+var feat=[['🗳️','定期的に選挙が行われる'],['📣','多数の宣伝チャンネルで宣伝可能'],['😊','民度がとにかくいい'],['🎙️','VCが活発に動いている'],['🏆','個人主催の大会が開催できる'],['🎉','定期的にイベントが開催'],['🎁','常時開催のイベントで豪華な報酬がもらえる'],['🤝','メンバー数に関係なく連携可能'],['⛏️','このサーバー直属のマイクラサーバーがある']];
+
+var boost=[['1','サーバー貢献者','仕事場で稼ぐコインが1.1倍。vip宣伝(1h)とブースター専用宣伝場(1h)で宣伝できる。'],['2','最高のサーバー貢献者','一部イベントで優遇措置を受けられる。'],['5','神','神専用宣伝場(2h)で宣伝できる。'],['10','GOD','管理者より少し弱い権限が与えられる。']];
+
+var inv='不定期開催のメンバー招待イベント中に、一定数のメンバーを招待する',ev='一部イベントで優遇措置を受けられる',em='表示名の横に専用の絵文字が付く',vip='vip宣伝(1h)で宣伝できる';
+
+var roles=[['サーバー貢献人',[vip],[inv]],['最高のサーバー貢献人',[ev],[inv]],['サーバー貢献者',['ブースター専用宣伝場(1h)とvip宣伝(1h)で宣伝できる','常時開催の資金管理イベントで稼げるコインが1.1倍',em],['サーバーを1ブーストする(ブーストが切れたら剥奪)']],['最高のサーバー貢献者',[ev,em],['サーバーを2ブーストする(ブーストが切れたら剥奪)']],['神',['神専用宣伝場(2h)とvip宣伝(1h)で宣伝できる',ev,'常時開催のランクアップイベントで、もらえるxpが1.2倍','「個人的なお知らせ」で話せる',em],['ランクアップイベントでレベル28に到達する','資金管理イベントのshopで500000000コインで購入する',inv,'サーバーを5ブーストする(ブーストが切れたら剥奪)']],['GOD',['管理者より少し弱い権限が与えられる',vip,ev,em],['ランクアップイベントでレベル45に到達する','資金管理イベントのshopで10000000000コインで購入する',inv,'サーバーを10ブーストする(ブーストが切れたら剥奪)']],['永久名誉鯖民(歴代獲得者0人)',[vip,ev,'表示名の横に💎が付く'],['ランクアップイベントでレベル90に到達する','資金管理イベントのshopで9000000000000コインで購入する',inv]],['固有ロール(鯖主が認めた1人だけ)',[vip,'貢献者ロールの中で、いちばん上に表示される','ロール名と色を、もらった本人が決められる'],['鯖主に、サーバーへ多大な貢献をしたと認められたメンバー1人にだけ付与される'],'最強の貢献人・ベンジリー / 睡眠宣言の神 / 最高のディーラー! / 万年管理職 / 浮上率の神 / ブーストの神']];
+
+var groups=[['発言・マナー',[['雰囲気を悪くする発言はNG','他人が傷つく発言や、管理者が悪質と判断した発言は控えてください。'],['不謹慎・宗教・差別的な発言はNG','不謹慎な話題、宗教、差別的な発言はやめてください。'],['公の場での喧嘩はNG','雰囲気が悪くなるので、公の場での喧嘩はやめましょう。'],['下ネタは専用チャンネルだけ','「下ネタ雑談」「あーるじゅうはち」以外では禁止です。']]],['サーバーの使い方',[['スパム・運営の妨害は禁止','過度なスパムや、運営の妨害・遅延は固く禁じます。'],['宣伝は宣伝場だけ','宣伝場以外での宣伝はやめましょう。'],['引き抜きは控える','引き抜き行為などは控えてください。'],['サブアカウントは申請制','「目安箱」でサブアカウントをメンションし、管理者の認証を受けてください。'],['管理者について','管理者は、緊急事態を除き「管理者たち」ロールのメンバーのみです。']]],['ペナルティ',[['違反したときの対応','ルール1〜9を破った回数で、対応が変わります。',1],['GODロールでの荒らしは即BAN','GODロールを使った荒らしを確認した場合、直ちにBANします。']]],['必ず守ること',[['日本の法律を守る','日本国の法律を遵守してください。'],['個人情報をばらさない','人の個人情報をばらすような発言はしないでください。']]],['例外・特別な扱い',[['宣伝場以外で宣伝したとき','違反の判定はせず、メッセージの削除と1時間のタイムアウトになります。'],['深夜(21:00〜6:00)のメンション','「雑談メンションOK」系列へメンションするときは、「深夜の雑談メンションOK」系列を使いましょう。(管理者の重要なお知らせは例外)'],['「無法地帯」はルール適用外','「無法地帯」(2か所)では、スパムや下ネタも違反になりません。']]],['その他',[['トラブルが起きたら','ユーザー間、またはユーザーと運営・サーバーとの間のトラブルは、当事者間で誠実に解決します。裁判上の紛争になった場合は、鯖主の居住地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とします。'],['鯖主について','鯖主は基本的に「ひまじん」(てめえらの非常食 ※口悪いです あと鯖主です)です。'],['全力で楽しもう','このサーバーを全力で楽しみましょう。']]]];
+
+var staff=[['任期',['2026年9月11日〜2027年1月11日（の予定）']],['〜副理事〜',['ベンジリー']],['〜上級管理者〜',['QS－RS']],['〜管理者〜',['ドパグマ']],['〜モデレーター〜',['tetu23','minato','おじいちゃん（佐藤）']],['〜常任理事〜',['ちょこほし','kigo7623','すぎのき','solaris']],['〜常任鯖主補佐〜',['akage']],['〜maison de craft管理人〜',['尾場加イッチ']]];
+
+var li=function(a){return a.map(function(x){return '<li>'+x+'</li>'}).join('')};
+
+$('#bento').innerHTML=feat.map(function(f,i){return '<li class="card rv" data-spot style="--d:'+i+'"><span class="e" aria-hidden="true">'+f[0]+'</span><p>'+f[1]+'</p></li>'}).join('');
+
+$('#boosts').innerHTML=boost.map(function(b,i){return '<li class="card rv" data-spot data-tilt style="--d:'+i+'"><b>'+b[0]+'<small>ブースト</small></b><em>'+b[1]+'</em><p>'+b[2]+'</p></li>'}).join('');
+
+$('#acc').innerHTML=roles.map(function(r,i){return '<details class="card rv" data-spot style="--d:'+Math.min(i,4)+'"><summary>'+r[0]+'</summary><div class="pn">'+(r[3]?'<p>'+r[3]+'</p>':'')+'<h3>特典</h3><ul>'+li(r[1])+'</ul><h3>入手方法</h3><ul>'+li(r[2])+'</ul></div></details>'}).join('');
+
+var lad='<div class="ladder"><div style="--w:25%"><b>1回目</b>違反者1のロール<br>1時間タイムアウト</div><div style="--w:50%"><b>2回目</b>違反者2のロール<br>1日タイムアウト</div><div style="--w:75%"><b>3回目</b>違反者3のロール<br>1週間タイムアウト</div><div style="--w:100%"><b>4回目以降</b>特例がない限り<br>サーバーからBAN</div></div><span>⚠️ ルール12・13(日本の法律を守る・個人情報をばらさない)を破ると、2回分の違反として扱います。</span>';
+
+$('#rl').innerHTML=groups.map(function(g){return '<h3 class="grp">'+g[0]+'</h3><ol class="rules">'+g[1].map(function(r){return '<li class="card rule rv" data-spot><div><b>'+r[0]+'</b><span>'+r[1]+'</span>'+(r[2]?lad:'')+'</div></li>'}).join('')+'</ol>'}).join('');
+
+$('#st').innerHTML=staff.map(function(s,i){return '<div class="card rv" data-spot><h3>'+s[0]+'</h3>'+s[1].map(function(x){return '<p>'+x+'</p>'}).join('')+'</div>'}).join('');
+
+var mw=['maison de vacancier へようこそ','交流・イベント・大会を楽しもう','選挙','イベント','大会','VC','Minecraft','見る専OK','即抜けOK'],mh='';
+
+mw.forEach(function(w){mh+='<span>✦ '+w+'</span>'});mh+=mh;
+
+$('#m1').innerHTML=mh+mh;$('#m2').innerHTML=mh+mh;
+
+var all=$('#all'),ds=function(){return [].slice.call(document.querySelectorAll('#acc details'))};
+
+all.addEventListener('click',function(){var o=all.getAttribute('aria-expanded')!=='true';ds().forEach(function(d){d.open=o})});
+
+document.addEventListener('toggle',function(e){if(!e.target.matches('#acc details'))return;var a=ds().every(function(d){return d.open});all.setAttribute('aria-expanded',a);all.textContent=a?'すべて閉じる':'すべて開く'},true);
+
+var fx=$('#fx');function setFx(v){R.setAttribute('data-motion',v?'on':'off');fx.textContent='🎬 アニメ '+(v?'ON':'OFF');fx.setAttribute('aria-pressed',v);dirty=1}
+
+var dirty=1;setFx(!reduce);fx.addEventListener('click',function(){setFx(!on())});
+
+var th=$('#th');th.addEventListener('click',function(e){var dark=getComputedStyle(R).getPropertyValue('--lit').trim()==='0',nt=dark?'light':'dark',ap=function(){R.setAttribute('data-theme',nt);dirty=1};
+
+if(!document.startViewTransition||!on())return ap();var x=e.clientX,y=e.clientY,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+
+document.startViewTransition(ap).ready.then(function(){R.animate({clipPath:['circle(0 at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},{duration:650,easing:'cubic-bezier(.2,.8,.2,1)',pseudoElement:'::view-transition-new(root)'})})});
+
+var h=$('#t'),tt=h.textContent,n=0;h.setAttribute('aria-label',tt);h.textContent='';
+
+tt.split(' ').forEach(function(w,wi){if(wi)h.appendChild(document.createTextNode(' '));var s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');[].forEach.call(w,function(c){var x=document.createElement('span');x.className='ch';x.style.setProperty('--i',n++);x.textContent=c;s.appendChild(x)});h.appendChild(s)});
+
+var days=Math.max(0,Math.floor((Date.now()-new Date('2026-02-12T00:00:00+09:00'))/864e5)),de=$('#days'),nf=new Intl.NumberFormat('ja-JP');
+
+(function(){if(!on()){de.textContent=nf.format(days);return}var t0=performance.now()+400;requestAnimationFrame(function f(t){var p=Math.max(0,Math.min(1,(t-t0)/1600));de.textContent=nf.format(Math.round(days*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(f)})})();
+
+if(!CSS.supports('(animation-timeline: view()) and (animation-range: entry)')){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});document.querySelectorAll('.rv').forEach(function(e){io.observe(e)})}
+
+var bar=$('#bar');if(!CSS.supports('animation-timeline: scroll()')){addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;bar.style.scale=(m>0?scrollY/m:0)+' 1'},{passive:true})}
+
+var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;links.forEach(function(a){var c=a.getAttribute('href')==='#'+e.target.id;a.setAttribute('aria-current',c);if(c)a.scrollIntoView({block:'nearest',inline:'center'})})})},{rootMargin:'-40% 0px -55% 0px'});
+
+secs.forEach(function(s){so.observe(s)});
+
+document.addEventListener('pointermove',function(e){var c=e.target.closest&&e.target.closest('[data-spot]');if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');if(c.hasAttribute('data-tilt')&&fine&&on()){var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='rotateY('+x*10+'deg) rotateX('+-y*10+'deg) translateZ(6px)'}});
+
+document.querySelectorAll('[data-tilt]').forEach(function(c){c.addEventListener('pointerleave',function(){c.style.transform=''})});
+
+document.querySelectorAll('[data-mag]').forEach(function(b){b.addEventListener('pointermove',function(e){if(!fine||!on())return;var r=b.getBoundingClientRect();b.style.translate=(e.clientX-r.left-r.width/2)*.18+'px '+(e.clientY-r.top-r.height/2)*.28+'px'});b.addEventListener('pointerleave',function(){b.style.translate=''})});
+
+var mx=innerWidth/2,my=innerHeight/2,gx=mx,gy=my,gl=$('#glow'),mn=.5,mnY=.5;
+
+document.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;mn=mx/innerWidth;mnY=1-my/innerHeight});
+
+
+
+
+
+var sc=$('#snow'),s2=sc.getContext('2d'),fl=[],W,H;function sr(){W=sc.width=innerWidth;H=sc.height=innerHeight}sr();addEventListener('resize',sr);
+
+for(var k=0;k<(innerWidth<720?20:40);k++)fl.push({x:Math.random()*W,y:Math.random()*H,r:.8+Math.random()*1.8,v:.4+Math.random()*1.1,p:Math.random()*6.28});
+
+requestAnimationFrame(function sl(t){requestAnimationFrame(sl);s2.clearRect(0,0,W,H);if(!on())return;var li2=getComputedStyle(R).getPropertyValue('--lit').trim()==='1';s2.fillStyle=li2?'rgba(110,140,200,.35)':'rgba(255,255,255,.5)';for(var i=0;i<fl.length;i++){var f=fl[i];f.y+=f.v;f.x+=Math.sin(t/1500+f.p)*.35;if(f.y>H+5){f.y=-5;f.x=Math.random()*W}s2.beginPath();s2.arc(f.x,f.y,f.r,0,6.28);s2.fill()}});
+
+var cv=$('#gl'),g=cv.getContext('webgl',{antialias:false,powerPreference:'low-power'}),sy=0,lastLit=-1;
+
+addEventListener('scroll',function(){sy=scrollY},{passive:true});
+
+if(!g){cv.style.background='radial-gradient(circle at 20% 10%,color-mix(in oklab,var(--a) 35%,transparent),transparent 55%),radial-gradient(circle at 85% 80%,color-mix(in oklab,var(--b) 28%,transparent),transparent 55%)'}
+
+else{
+
+var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}',
+
+fs='precision mediump float;uniform vec2 r,m;uniform float t,s,l;float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}float fb(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}void main(){vec2 u=gl_FragCoord.xy/r;vec2 p=u;p.x*=r.x/r.y;float q=fb(p*1.8+vec2(t*.04,s*.0003)+(m-.5)*.35);float w=fb(p*2.6-q*1.4+vec2(-t*.06,t*.03));vec3 c1=vec3(.68,.14,.25),c2=vec3(.1,.4,.3),c3=vec3(.9,.7,.3);vec3 c=mix(c1,c2,w);c=mix(c,c3,smoothstep(.45,.95,q)*.7);vec3 d=vec3(.02,.06,.04)+c*pow(w,1.6)*.7;vec3 L=mix(vec3(1.,.97,.95),c,.26*w+.1*q);vec3 o=mix(d,L,l);o+=(h(gl_FragCoord.xy)-.5)*.03;gl_FragColor=vec4(o,1.);}';
+
+var sh=function(t,s){var o=g.createShader(t);g.shaderSource(o,s);g.compileShader(o);return o};
+
+var pr=g.createProgram();g.attachShader(pr,sh(g.VERTEX_SHADER,vs));g.attachShader(pr,sh(g.FRAGMENT_SHADER,fs));g.linkProgram(pr);g.useProgram(pr);
+
+var bf=g.createBuffer();g.bindBuffer(g.ARRAY_BUFFER,bf);g.bufferData(g.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),g.STATIC_DRAW);var lc=g.getAttribLocation(pr,'p');g.enableVertexAttribArray(lc);g.vertexAttribPointer(lc,2,g.FLOAT,false,0,0);
+
+var U=function(k){return g.getUniformLocation(pr,k)},ur=U('r'),um=U('m'),ut=U('t'),us=U('s'),ul=U('l');
+
+var rs=function(){var d=Math.min(devicePixelRatio||1,2)*.45;cv.width=Math.max(2,innerWidth*d|0);cv.height=Math.max(2,innerHeight*d|0);g.viewport(0,0,cv.width,cv.height);dirty=1};rs();addEventListener('resize',rs);
+
+var sm=0,sx=.5,sY=.5,t0=performance.now();
+
+requestAnimationFrame(function loop(now){requestAnimationFrame(loop);gx+=(mx-gx)*.12;gy+=(my-gy)*.12;if(fine&&on())gl.style.transform='translate('+gx+'px,'+gy+'px)';
+
+var lit=parseFloat(getComputedStyle(R).getPropertyValue('--lit'))||0,live=on();if(!live&&!dirty&&lit===lastLit)return;
+
+if(live){sm+=(sy-sm)*.06;sx+=(mn-sx)*.04;sY+=(mnY-sY)*.04}
+
+g.uniform2f(ur,cv.width,cv.height);g.uniform2f(um,live?sx:.5,live?sY:.5);g.uniform1f(ut,live?(now-t0)/1000:8);g.uniform1f(us,live?sm:0);g.uniform1f(ul,lit);g.drawArrays(g.TRIANGLES,0,3);dirty=0;lastLit=lit})}
+
 })();
+
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (() => {
@@ -279,19 +522,19 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
   const style = document.createElement("style");
   style.textContent = `
     #ve-toggle {
-      position: fixed; right: 16px; bottom: 16px; z-index: 99999;
+      position: fixed; right: 16px; bottom: 76px; z-index: 99999;
       border: 0; border-radius: 999px; padding: 13px 19px;
-      background: #9b6bff; color: white; font: inherit;
+      background: #c62839; color: white; font: inherit;
       font-weight: 900; cursor: pointer;
       box-shadow: 0 4px 18px #0005;
     }
     #ve-panel {
-      position: fixed; z-index: 100000; right: 12px; bottom: 72px;
+      position: fixed; z-index: 100000; right: 12px; bottom: 132px;
       width: min(360px, calc(100vw - 24px));
       max-height: min(78vh, 700px); overflow: auto;
       padding: 18px; border-radius: 16px;
-      background: #211b30; color: #fff;
-      border: 1px solid #7252a0; box-shadow: 0 8px 40px #0008;
+      background: #17271f; color: #fff7f1;
+      border: 1px solid #3ddc84; box-shadow: 0 8px 40px #0008;
       font: 14px/1.5 system-ui, sans-serif;
     }
     #ve-panel * { box-sizing: border-box; }
@@ -303,7 +546,7 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
     #ve-panel input[type="url"],
     #ve-panel input[type="text"] {
       width: 100%; padding: 9px; margin: 5px 0 10px;
-      border: 1px solid #7252a0; border-radius: 7px;
+      border: 1px solid #3ddc84; border-radius: 7px;
       background: #17102b; color: white;
     }
     #ve-panel input[type="color"] {
@@ -312,9 +555,9 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
     #ve-panel button {
       padding: 8px 10px; margin: 3px;
       border: 0; border-radius: 7px; cursor: pointer;
-      background: #9b6bff; color: white;
+      background: #c62839; color: white;
     }
-    #ve-panel button.secondary { background: #443653; }
+    #ve-panel button.secondary { background: #1f7a46; }
     #ve-panel label { display: block; margin-top: 9px; }
     #ve-panel small { color: #d4c4ed; }
     #ve-status { white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -465,10 +708,10 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
 
     const order = originalContent.sectionOrder;
     if (Array.isArray(order)) {
-      const panels = $$(".panel");
-      if (panels.length) {
-        const parent = panels[0].parentElement;
-        const byId = new Map(panels.map(el => [el.dataset.veid, el]));
+      const sections = $$("main .wrap > section");
+      if (sections.length) {
+        const parent = sections[0].parentElement;
+        const byId = new Map(sections.map(el => [el.dataset.veid, el]));
         const anchor = parent.querySelector(".cta");
         order.forEach(id => {
           const el = byId.get(String(id));
@@ -609,7 +852,7 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
   $("#ve-width-apply").onclick = () => {
     if (!selected) return status("先に場所を選択してください。");
     const value = $("#ve-width").value.trim();
-    if (!/^(auto|\d{1,3}(\.\d+)?%)$/.test(value))
+    if (!/^(auto|\d{1,3}(.\d+)?%)$/.test(value))
       return status("幅は auto、または 1%〜100% の形式で入力してください。");
     selected.style.width = value;
     recordStyle("width", value);
@@ -617,11 +860,11 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
   };
 
   function moveSection(direction) {
-    if (!selected) return status("先にセクションを選択してください。");
-    const section = selected.closest(".panel");
+    if (!selected) return status("先にセクション内の要素を選択してください。");
+    const section = selected.closest("main .wrap > section");
     if (!section) return status("タブ内のセクションを選択してください。");
 
-    const panels = $$(".panel").filter(el =>
+    const panels = $$("main .wrap > section").filter(el =>
       el.parentElement === section.parentElement
     );
     const index = panels.indexOf(section);
@@ -631,7 +874,7 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
     if (direction < 0) section.parentElement.insertBefore(section, next);
     else section.parentElement.insertBefore(next, section);
 
-    originalContent.sectionOrder = $$(".panel")
+    originalContent.sectionOrder = $$("main .wrap > section")
       .filter(el => el.parentElement === section.parentElement)
       .map(el => el.dataset.veid);
 
@@ -712,5 +955,7 @@ window.addEventListener('hashchange',function(){show(location.hash.slice(1))});s
   init().catch(error => status("エラー: " + error.message));
 })();
 </script>
+
 </body>
+
 </html>
